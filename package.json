@@ -1,0 +1,20 @@
+{
+  "name": "p2g4",
+  "version": "1.0.0",
+  "description": "Project 2 Group 4",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kcbryan10/P2G4.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kcbryan10/P2G4/issues"
+  },
+  "homepage": "https://github.com/kcbryan10/P2G4#readme"
+}
