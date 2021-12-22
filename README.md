@@ -12,6 +12,8 @@
 - Express
 - MySQL
 - Sequelize
+- Handlebars
+- Bcyrpt
 
 ## Questions
 
