@@ -1,6 +1,7 @@
-# P2G4
+# Lesson Scheduler
 
 ## Description
+  this applications will allow stundents to schedule appointment with teachers.
 
 ## Table of Contents
 
