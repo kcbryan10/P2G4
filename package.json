@@ -16,5 +16,13 @@
   "bugs": {
     "url": "https://github.com/kcbryan10/P2G4/issues"
   },
-  "homepage": "https://github.com/kcbryan10/P2G4#readme"
+  "homepage": "https://github.com/kcbryan10/P2G4#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "express": "^4.17.2",
+    "handlebars": "^4.7.7",
+    "mysql": "^2.18.1",
+    "node": "^17.3.0",
+    "sequelize": "^6.12.1"
+  }
 }
