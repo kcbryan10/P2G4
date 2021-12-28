@@ -1,0 +1,27 @@
+<html lang='en'>
+  <head>
+    <meta charset='UTF-8' />
+    <meta http-equiv='X-UA-Compatible' content='IE=edge' />
+    <meta name='viewport' content='width=device-width, initial-scale=1.0' />
+    <title>Lesson Scheduler</title>
+  </head>
+  <body>
+    <header>
+      <nav>
+        {{#if loggedIn}}
+          <span>Hello, {{currentUser}}</span>
+        {{/if}}
+        <a href='/'>home</a>
+        <a href='/dashboard'>dashboard</a>
+        {{#if loggedIn}}
+          <button id='logout'>logout</button>
+        {{else}}
+          <a href='/login'>login/signup</a>
+        {{/if}}
+      </nav>
+      <h1>Lesson Scheduler</h1>
+    </header>
+    <main>{{{body}}}</main>
+    <footer>We hope you learned something new today</footer>
+  </body>
+</html>
