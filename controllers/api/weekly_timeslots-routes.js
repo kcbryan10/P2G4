@@ -126,3 +126,22 @@ router.put('/:id', withAuth, (req, res) => {
 });
 
 //delete route
+router.delete('/:id', withAuth, (req, res) => {
+  Weekly_Timeslots.destroy({
+    where: {
+      id: req.params.id
+    }
+  })
+    .then(dbTimeslotData => {
+      if (!dbTimeslotData) {
+        res.status(404).json({ message: 'ID of this timeslot was not found' });
+        return;
+      }
+      res.json(dbTimeslotData))
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+module.exports = router;
