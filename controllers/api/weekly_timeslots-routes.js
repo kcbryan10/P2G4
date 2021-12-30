@@ -81,14 +81,7 @@ router.get('/start_date/:start_date', (req, res) => {
 
 //post route
 router.post('/', withAuth, (req, res) => {
-  Weekly_Timeslots.create({
-    day: req.body.day,
-    start_time: req.body.start_time,
-    end_time: req.body.end_time,
-    start_date: req.body.start_date,
-    end_date: req.body.end_date,
-    teacher_id: req.body.teacher_id
-  })
+  Weekly_Timeslots.create(req.body)
     .then(dbTimeslotData => res.json(dbTimeslotData))
     .catch(err => {
       console.log(err);
@@ -98,21 +91,11 @@ router.post('/', withAuth, (req, res) => {
 
 //update route
 router.put('/:id', withAuth, (req, res) => {
-  Weekly_Timeslots.update(
-    {
-      day: req.body.day,
-      start_time: req.body.start_time,
-      end_time: req.body.end_time,
-      start_date: req.body.start_date,
-      end_date: req.body.end_date,
-      teacher_id: req.body.teacher_id
-    },
-    {
-      where: {
-        id: req.params.id
-      }
+  Weekly_Timeslots.update(req.body, {
+    where: {
+      id: req.params.id
     }
-  )
+  })
     .then(dbTimeslotData => {
       if (!dbTimeslotData) {
         res.status(404).json({ message: 'ID of this timeslot was not found' });
