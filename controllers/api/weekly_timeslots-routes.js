@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const { Weekly_Timeslots, Teachers, Lessons } = require('../../models');
+const withAuth = require('../../utils/auth');
 
 //Get all from weekly timeslots. Probably unneccesary for current goals, but why not
 router.get('/', (req, res) => {
@@ -77,3 +78,10 @@ router.get('/start_date/:start_date', (req, res) => {
       res.status(500).json(err);
     });
 });
+
+//post route
+router.post('/',)
+
+//update route
+
+//delete route
