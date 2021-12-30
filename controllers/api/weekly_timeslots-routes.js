@@ -101,7 +101,8 @@ router.put('/:id', withAuth, (req, res) => {
         res.status(404).json({ message: 'ID of this timeslot was not found' });
         return;
       }
-      res.json(dbTimeslotData))
+      res.json(dbTimeslotData)
+    })
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
@@ -120,7 +121,8 @@ router.delete('/:id', withAuth, (req, res) => {
         res.status(404).json({ message: 'ID of this timeslot was not found' });
         return;
       }
-      res.json(dbTimeslotData))
+      res.json(dbTimeslotData)
+    })
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
