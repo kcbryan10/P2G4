@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
       'id',
       'email',
       //This part could be removed. or it might not work. mixing ands and ors can get dicey. Also it's just plain weird. I like weird
-      [sequelize.literal("(SELECT TABLE_NAME FROM replaceWithDatabaseName.INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND (teachers.user_id = users.id OR students.user_id = users.id)"), 'user_role']
+      [sequelize.literal("(SELECT TABLE_NAME FROM lesson_scheduler_db.INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND (teachers.user_id = users.id OR students.user_id = users.id)"), 'user_role']
     ]
   })
     .then(dbUsersData => res.json(dbUsersData))
