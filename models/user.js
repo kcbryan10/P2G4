@@ -1,7 +1,7 @@
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 
-class Users extends Model {}
+class User extends Model {}
 
 // set up fields and rules for Users model
 Users.init(
@@ -33,4 +33,4 @@ Users.init(
   }
 );
 
-module.exports = Users;
+module.exports = User;
