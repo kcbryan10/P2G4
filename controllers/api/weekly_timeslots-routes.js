@@ -38,8 +38,25 @@ router.get('/:id', (req, res) => {
     });
 });
 
-
-//get route by day
+//get route by day. It'll need a redirect. might be able to do day:day instead. I can't test it so I'll come back to it later.
+router.get('/day/:day', (req, res) => {
+  Weekly_Timeslots.findAll({
+    where: {
+      day: req.params.day
+    },
+    include: [
+      {
+        model: Teachers,
+        attributes: ['id', 'first_name', 'last_name']
+      }
+    ]
+  })
+    .then(dbCommentData => res.json(dbCommentData))
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
 
 //get route by start_date
 
