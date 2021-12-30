@@ -58,5 +58,22 @@ router.get('/day/:day', (req, res) => {
     });
 });
 
-//get route by start_date
-
+//get route by start_date. same as above. might be able to use start_date:start_date
+router.get('/start_date/:start_date', (req, res) => {
+  Weekly_Timeslots.findAll({
+    where: {
+      start_date: req.params.start_date
+    },
+    include: [
+      {
+        model: Teachers,
+        attributes: ['id', 'first_name', 'last_name']
+      }
+    ]
+  })
+    .then(dbCommentData => res.json(dbCommentData))
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
