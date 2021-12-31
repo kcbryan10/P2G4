@@ -2,18 +2,87 @@
   <div class='day'>
     <p>Sunday</p>
     <ul class='lesson-times'>
+      {{#each lessons as |lesson|}}
+      {{#if checkDay 1 lesson.weekly_timeslot.day}}
       <li>
-        {{> lesson-times time}}
+        {{> lesson-times lesson}}
       </li>
+      {{/if}}
+      {{/each}}
     </ul>
   </div>
-  <div class='day'></div>
-  <div class='day'></div>
-  <div class='day'></div>
-  <div class='day'></div>
-  <div class='day'></div>
-  <div class='day'></div>
-
+  <div class='day'>
+    <p>Monday</p>
+    <ul class='lesson-times'>
+      {{#each lessons as |lesson|}}
+      {{#if checkDay 2 lesson.weekly_timeslot.day}}
+      <li>
+        {{> lesson-times lesson}}
+      </li>
+      {{/if}}
+      {{/each}}
+    </ul>
+  </div>
+  <div class='day'>
+    <p>Tuesday</p>
+    <ul class='lesson-times'>
+      {{#each lessons as |lesson|}}
+      {{#if checkDay 3 lesson.weekly_timeslot.day}}
+      <li>
+        {{> lesson-times lesson}}
+      </li>
+      {{/if}}
+      {{/each}}
+    </ul>
+  </div>
+  <div class='day'>
+    <p>Wednesday</p>
+    <ul class='lesson-times'>
+      {{#each lessons as |lesson|}}
+      {{#if checkDay 4 lesson.weekly_timeslot.day}}
+      <li>
+        {{> lesson-times lesson}}
+      </li>
+      {{/if}}
+      {{/each}}
+    </ul>
+  </div>
+  <div class='day'>
+    <p>Thursday</p>
+    <ul class='lesson-times'>
+      {{#each lessons as |lesson|}}
+      {{#if checkDay 5 lesson.weekly_timeslot.day}}
+      <li>
+        {{> lesson-times lesson}}
+      </li>
+      {{/if}}
+      {{/each}}
+    </ul>
+  </div>
+  <div class='day'>
+    <p>Friday</p>
+    <ul class='lesson-times'>
+      {{#each lessons as |lesson|}}
+      {{#if checkDay 6 lesson.weekly_timeslot.day}}
+      <li>
+        {{> lesson-times lesson}}
+      </li>
+      {{/if}}
+      {{/each}}
+    </ul>
+  </div>
+  <div class='day'>
+    <p>Saturday</p>
+    <ul class='lesson-times'>
+      {{#each lessons as |lesson|}}
+      {{#if checkDay 7 lesson.weekly_timeslot.day}}
+      <li>
+        {{> lesson-times lesson}}
+      </li>
+      {{/if}}
+      {{/each}}
+    </ul>
+  </div>
 </div>
 
 <button id='find-instructor-btn'>find an instructor</button>
