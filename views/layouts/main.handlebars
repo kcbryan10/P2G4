@@ -23,5 +23,8 @@
     </header>
     <main>{{{body}}}</main>
     <footer>We hope you learned something new today</footer>
+    {{#if loggedIn}}
+      <script src='/js/logout.js'></script>
+    {{/if}}
   </body>
 </html>
