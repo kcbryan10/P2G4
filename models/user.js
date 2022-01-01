@@ -3,6 +3,8 @@ const sequelize = require("../config/connection");
 
 class User extends Model {}
 
+const validPassword = dbUsersData.checkPassword(req.body.password);
+
 // set up fields and rules for User model
 User.init(
   {
