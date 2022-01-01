@@ -3,8 +3,8 @@ const sequelize = require("../config/connection");
 
 class User extends Model {}
 
-// set up fields and rules for Users model
-Users.init(
+// set up fields and rules for User model
+User.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -29,7 +29,7 @@ Users.init(
     sequelize,
     freezeTableName: true,
     underscored: true,
-    modelName: "users",
+    modelName: "user",
   }
 );
 
