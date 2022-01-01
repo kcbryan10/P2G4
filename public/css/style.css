@@ -7,6 +7,13 @@ body {
   margin: 0;
 }
 
+/* ----- GENERAL ----- */
+button {
+  background-color: #ffde04;
+  border: 2px solid black;
+  border-radius: 10px;
+}
+
 /* ----- MAIN STYLES ----- */
 header nav {
   margin: 5px;
@@ -78,6 +85,37 @@ footer {
 }
 .features .find-instructor-wrapper {
   background-color: rgba(97, 97, 100, 0.52);
+}
+
+/* ----- LOGIN STYLES ----- */
+.teacher-signup a {
+  text-decoration: none;
+  color: rgba(19, 26, 117, 0.73);
+  margin-right: 5px;
+}
+.teacher-signup a:hover {
+  color: #424abe;
+}
+
+form {
+  margin: 0;
+}
+form h2 {
+  margin: 0;
+}
+form input {
+  margin: 5px;
+}
+
+.login-form {
+  background-color: rgba(19, 26, 117, 0.73);
+  padding: 10px;
+  color: white;
+}
+
+.signup-form {
+  background-color: rgba(97, 97, 100, 0.52);
+  padding: 10px;
 }
 
 /*# sourceMappingURL=style.css.map */

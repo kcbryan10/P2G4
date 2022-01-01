@@ -1,6 +1,7 @@
 $dark-blue: rgba(19, 26, 117, 0.73);
 $light-blue: rgb(66, 74, 190);
 $gray: rgba(97, 97, 100, 0.52);
+$yellow-orange: rgb(255, 222, 4);
 
 :root {
   box-sizing: border-box;
@@ -9,6 +10,13 @@ $gray: rgba(97, 97, 100, 0.52);
 
 body {
   margin: 0;
+}
+
+/* ----- GENERAL ----- */
+button {
+  background-color: $yellow-orange;
+  border: 2px solid black;
+  border-radius: 10px;
 }
 
 /* ----- MAIN STYLES ----- */
@@ -103,4 +111,40 @@ footer {
   .find-instructor-wrapper {
     background-color: $gray;
   }
+}
+
+/* ----- LOGIN STYLES ----- */
+.teacher-signup {
+  a {
+    text-decoration: none;
+    color: $dark-blue;
+    margin-right: 5px;
+  }
+
+  a:hover {
+    color: $light-blue;
+  }
+}
+
+form {
+  margin: 0;
+
+  h2 {
+    margin: 0;
+  }
+
+  input {
+    margin: 5px;
+  }
+}
+
+.login-form {
+  background-color: $dark-blue;
+  padding: 10px;
+  color: white;
+}
+
+.signup-form {
+  background-color: $gray;
+  padding: 10px;
 }
