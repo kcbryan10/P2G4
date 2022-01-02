@@ -14,18 +14,22 @@ button {
   border-radius: 10px;
 }
 
+a {
+  text-decoration: none;
+  color: rgba(19, 26, 117, 0.73);
+}
+
+a:hover {
+  color: #424abe;
+}
+
 /* ----- MAIN STYLES ----- */
 header nav {
   margin: 5px;
   height: 20px;
 }
 header nav a {
-  text-decoration: none;
-  color: rgba(19, 26, 117, 0.73);
   margin-right: 5px;
-}
-header nav a:hover {
-  color: #424abe;
 }
 header hr {
   border: 0;
@@ -66,6 +70,7 @@ footer {
 }
 .hero-wrapper .image-credit a {
   color: white;
+  text-decoration: underline;
 }
 
 .features article {
@@ -88,15 +93,6 @@ footer {
 }
 
 /* ----- LOGIN STYLES ----- */
-.teacher-signup a {
-  text-decoration: none;
-  color: rgba(19, 26, 117, 0.73);
-  margin-right: 5px;
-}
-.teacher-signup a:hover {
-  color: #424abe;
-}
-
 form {
   margin: 0;
 }

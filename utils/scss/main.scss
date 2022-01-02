@@ -19,6 +19,15 @@ button {
   border-radius: 10px;
 }
 
+a {
+  text-decoration: none;
+  color: $dark-blue;
+}
+
+a:hover {
+  color: $light-blue;
+}
+
 /* ----- MAIN STYLES ----- */
 header {
   nav {
@@ -26,13 +35,7 @@ header {
     height: 20px;
 
     a {
-      text-decoration: none;
-      color: $dark-blue;
       margin-right: 5px;
-    }
-
-    a:hover {
-      color: $light-blue;
     }
   }
 
@@ -84,6 +87,7 @@ footer {
 
     a {
       color: white;
+      text-decoration: underline;
     }
   }
 }
@@ -114,18 +118,6 @@ footer {
 }
 
 /* ----- LOGIN STYLES ----- */
-.teacher-signup {
-  a {
-    text-decoration: none;
-    color: $dark-blue;
-    margin-right: 5px;
-  }
-
-  a:hover {
-    color: $light-blue;
-  }
-}
-
 form {
   margin: 0;
 
