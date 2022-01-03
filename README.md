@@ -16,7 +16,7 @@
 - Bcyrpt
 - SASS
 
-## Questions
+## Common Questions
 
 ## Links
 
