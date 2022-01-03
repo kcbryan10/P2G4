@@ -3,7 +3,7 @@
     <p>Sunday</p>
     <ul class='lesson-times'>
       {{#each lessons as |lesson|}}
-      {{#if checkDay 1 lesson.weekly_timeslot.day}}
+      {{#if (checkDay 1 lesson.weekly_timeslot.day)}}
       <li>
         {{> lesson-times lesson}}
       </li>
@@ -15,7 +15,7 @@
     <p>Monday</p>
     <ul class='lesson-times'>
       {{#each lessons as |lesson|}}
-      {{#if checkDay 2 lesson.weekly_timeslot.day}}
+      {{#if (checkDay 2 lesson.weekly_timeslot.day)}}
       <li>
         {{> lesson-times lesson}}
       </li>
@@ -27,7 +27,7 @@
     <p>Tuesday</p>
     <ul class='lesson-times'>
       {{#each lessons as |lesson|}}
-      {{#if checkDay 3 lesson.weekly_timeslot.day}}
+      {{#if (checkDay 3 lesson.weekly_timeslot.day)}}
       <li>
         {{> lesson-times lesson}}
       </li>
@@ -39,7 +39,7 @@
     <p>Wednesday</p>
     <ul class='lesson-times'>
       {{#each lessons as |lesson|}}
-      {{#if checkDay 4 lesson.weekly_timeslot.day}}
+      {{#if (checkDay 4 lesson.weekly_timeslot.day)}}
       <li>
         {{> lesson-times lesson}}
       </li>
@@ -51,7 +51,7 @@
     <p>Thursday</p>
     <ul class='lesson-times'>
       {{#each lessons as |lesson|}}
-      {{#if checkDay 5 lesson.weekly_timeslot.day}}
+      {{#if (checkDay 5 lesson.weekly_timeslot.day)}}
       <li>
         {{> lesson-times lesson}}
       </li>
@@ -63,7 +63,7 @@
     <p>Friday</p>
     <ul class='lesson-times'>
       {{#each lessons as |lesson|}}
-      {{#if checkDay 6 lesson.weekly_timeslot.day}}
+      {{#if (checkDay 6 lesson.weekly_timeslot.day)}}
       <li>
         {{> lesson-times lesson}}
       </li>
@@ -75,7 +75,7 @@
     <p>Saturday</p>
     <ul class='lesson-times'>
       {{#each lessons as |lesson|}}
-      {{#if checkDay 7 lesson.weekly_timeslot.day}}
+      {{#if (checkDay 7 lesson.weekly_timeslot.day)}}
       <li>
         {{> lesson-times lesson}}
       </li>
