@@ -1,0 +1,150 @@
+$dark-blue: rgba(19, 26, 117, 0.73);
+$light-blue: rgb(66, 74, 190);
+$gray: rgba(97, 97, 100, 0.52);
+$yellow-orange: rgb(255, 222, 4);
+
+:root {
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  margin: 0;
+}
+
+/* ----- GENERAL ----- */
+button {
+  background-color: $yellow-orange;
+  border: 2px solid black;
+  border-radius: 10px;
+}
+
+/* ----- MAIN STYLES ----- */
+header {
+  nav {
+    margin: 5px;
+    height: 20px;
+
+    a {
+      text-decoration: none;
+      color: $dark-blue;
+      margin-right: 5px;
+    }
+
+    a:hover {
+      color: $light-blue;
+    }
+  }
+
+  hr {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(
+      to right,
+      transparent,
+      black,
+      transparent
+    );
+  }
+
+  h1 {
+    text-align: center;
+  }
+}
+
+footer {
+  text-align: center;
+  margin-bottom: 5px;
+  font-style: italic;
+}
+
+/* ----- HOME STYLES ----- */
+.hero-wrapper {
+  position: relative;
+  background-image: linear-gradient(to bottom, $gray, $dark-blue),
+    url('../images/learning.png');
+  background-position: center;
+  background-size: cover;
+  height: 500px;
+
+  p {
+    position: absolute;
+    top: 20%;
+    color: white;
+    font-size: 40px;
+    text-shadow: 1px 1px black;
+    text-align: center;
+  }
+
+  .image-credit {
+    font-size: 10px;
+    position: absolute;
+    top: 1%;
+    right: 1%;
+
+    a {
+      color: white;
+    }
+  }
+}
+
+.features {
+  article {
+    padding: 10px 0;
+  }
+
+  h2 {
+    margin: 0;
+    text-align: center;
+  }
+
+  p {
+    margin: 0;
+    text-align: center;
+  }
+
+  .schedule-view-wrapper {
+    background-color: $dark-blue;
+    color: white;
+  }
+
+  .find-instructor-wrapper {
+    background-color: $gray;
+  }
+}
+
+/* ----- LOGIN STYLES ----- */
+.teacher-signup {
+  a {
+    text-decoration: none;
+    color: $dark-blue;
+    margin-right: 5px;
+  }
+
+  a:hover {
+    color: $light-blue;
+  }
+}
+
+form {
+  margin: 0;
+
+  h2 {
+    margin: 0;
+  }
+
+  input {
+    margin: 5px;
+  }
+}
+
+.login-form {
+  background-color: $dark-blue;
+  padding: 10px;
+  color: white;
+}
+
+.signup-form {
+  background-color: $gray;
+  padding: 10px;
+}
