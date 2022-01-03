@@ -1,6 +1,5 @@
 const User = require('./user');
 const Lesson = require('./Lesson');
-const  Specialties = require("./Specialties");
 const Teacher = require("./teacher");
 const Student = require("./student");
 const Timeslot = require("./timeslot");
