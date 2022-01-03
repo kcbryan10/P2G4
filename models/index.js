@@ -2,7 +2,7 @@ const User = require('./user');
 const Lesson = require('./Lesson');
 const Teacher = require("./teacher");
 const Student = require("./student");
-const Timeslot = require("./timeslot");
+const Weekly_timeslots = require("./weekly_timeslots");
 
 User.hasOne(Student, {
     foreignKey: 'user_id'
@@ -16,11 +16,11 @@ Student.hasMany(Lesson, {
     foreignKey: 'student_id'
 });
 
-Teacher.hasMany(Timeslot, {
+Teacher.hasMany(Weekly_timeslots, {
     foreignKey:'teacher_id'
 });
 
-Timeslot.hasMany(Lesson, {
+Weekly_timeslots.hasMany(Lesson, {
     foreignKey: 'timeslot_id'
 });
 
