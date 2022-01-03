@@ -1,15 +1,15 @@
 const User = require('./user');
 const Lesson = require('./Lesson');
-const Comment = require('./Comment');
 const  Specialties = require("./Specialties");
 const Teacher = require("./teacher");
 const Student = require("./student");
+const Timeslot = require("./timeslot");
 
-User.hasMany(Student, {
+User.hasOne(Student, {
     foreignKey: 'user_id'
 });
 
-User.hasMany(Teacher, {
+User.hasOne(Teacher, {
     foreignKey: 'user_id',
 });
 
