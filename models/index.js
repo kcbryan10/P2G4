@@ -21,7 +21,7 @@ Teacher.hasMany(Timeslot, {
     foreignKey:'teacher_id'
 });
 
-Timeslot.hasMany(lesson, {
+Timeslot.hasMany(Lesson, {
     foreignKey: 'timeslot_id'
 });
 
