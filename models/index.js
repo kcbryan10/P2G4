@@ -4,8 +4,6 @@ const Teacher = require('./teacher');
 const Student = require('./student');
 const Weekly_Timeslot = require('./Weekly_Timeslot');
 const Specialties = require('./Specialties');
-const { template } = require('handlebars');
-
 
 // User
 User.hasOne(Student, {
