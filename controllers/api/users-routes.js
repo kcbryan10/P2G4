@@ -1,18 +1,19 @@
 const router = require('express').Router();
-const { Users, Teachers, Students } = require('../../models');
+const { User, Teacher, Student } = require('../../models');
 const sequelize = require('../../config/connection');
+const withAuth = require('../../utils/auth');
 
-// get all Users
+// get all User
 router.get('/', (req, res) => {
-  Users.findAll({
+  User.findAll({
     attributes: [
       'id',
       'email',
       //This part could be removed. or it might not work. mixing ands and ors can get dicey. Also it's just plain weird. I like weird
-      [sequelize.literal("(SELECT TABLE_NAME FROM lesson_scheduler_db.INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND (teachers.user_id = users.id OR students.user_id = users.id)"), 'user_role']
+      [sequelize.literal("(SELECT TABLE_NAME FROM lesson_scheduler_db.INFORMATION_SCHEMA.TABLES WHERE TABLE_TYPE = 'BASE TABLE' AND (teacher.user_id = user.id OR student.user_id = user.id)"), 'user_role']
     ]
   })
-    .then(dbUsersData => res.json(dbUsersData))
+    .then(dbUserData => res.json(dbUserData))
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
@@ -20,18 +21,18 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-  Users.findOne({
+  User.findOne({
     attributes: { exclude: ['password'] },
     where: {
       id: req.params.id
     }
   })
-    .then(dbUsersData => {
-      if (!dbUsersData) {
-        res.status(404).json({ message: 'No Users found with this id' });
+    .then(dbUserData => {
+      if (!dbUserData) {
+        res.status(404).json({ message: 'No User found with this id' });
         return;
       }
-      res.json(dbUsersData);
+      res.json(dbUserData);
     })
     .catch(err => {
       console.log(err);
@@ -40,17 +41,17 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  Users.create({
+  User.create({
     email: req.body.email,
     password: req.body.password
   })
-    .then(dbUsersData => {
+    .then(dbUserData => {
       req.session.save(() => {
-        req.session.users_id = dbUsersData.id;
-        req.session.email = dbUsersData.email;
+        req.session.User_id = dbUserData.id;
+        req.session.email = dbUserData.email;
         req.session.loggedIn = true;
 
-        res.json(dbUsersData);
+        res.json(dbUserData);
       });
     })
     .catch(err => {
@@ -60,17 +61,17 @@ router.post('/', (req, res) => {
 });
 
 router.post('/login', (req, res) => {
-  Users.findOne({
+  User.findOne({
     where: {
       email: req.body.email
     }
-  }).then(dbUsersData => {
-    if (!dbUsersData) {
-      res.status(400).json({ message: 'No Users with that email address!' });
+  }).then(dbUserData => {
+    if (!dbUserData) {
+      res.status(400).json({ message: 'No User with that email address!' });
       return;
     }
 
-    const validPassword = dbUsersData.checkPassword(req.body.password);
+    const validPassword = dbUserData.checkPassword(req.body.password);
 
     if (!validPassword) {
       res.status(400).json({ message: 'Incorrect password!' });
@@ -78,11 +79,11 @@ router.post('/login', (req, res) => {
     }
 
     req.session.save(() => {
-      req.session.users_id = dbUsersData.id;
-      req.session.email = dbUsersData.email;
+      req.session.User_id = dbUserData.id;
+      req.session.email = dbUserData.email;
       req.session.loggedIn = true;
 
-      res.json({ Users: dbUsersData, message: 'You are now logged in!' });
+      res.json({ User: dbUserData, message: 'You are now logged in!' });
     });
   });
 });
@@ -98,19 +99,19 @@ router.post('/logout', (req, res) => {
   }
 });
 
-router.put('/:id', (req, res) => {
-  Users.update(req.body, {
+router.put('/:id', withAuth, (req, res) => {
+  User.update(req.body, {
     individualHooks: true,
     where: {
       id: req.params.id
     }
   })
-    .then(dbUsersData => {
-      if (!dbUsersData) {
-        res.status(404).json({ message: 'No Users found with this id' });
+    .then(dbUserData => {
+      if (!dbUserData) {
+        res.status(404).json({ message: 'No User found with this id' });
         return;
       }
-      res.json(dbUsersData);
+      res.json(dbUserData);
     })
     .catch(err => {
       console.log(err);
@@ -118,18 +119,18 @@ router.put('/:id', (req, res) => {
     });
 });
 
-router.delete('/:id', (req, res) => {
-  Users.destroy({
+router.delete('/:id', withAuth, (req, res) => {
+  User.destroy({
     where: {
       id: req.params.id
     }
   })
-    .then(dbUsersData => {
-      if (!dbUsersData) {
-        res.status(404).json({ message: 'No Users found with this id' });
+    .then(dbUserData => {
+      if (!dbUserData) {
+        res.status(404).json({ message: 'No User found with this id' });
         return;
       }
-      res.json(dbUsersData);
+      res.json(dbUserData);
     })
     .catch(err => {
       console.log(err);
