@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Weekly_Timeslots extends Model { }
+class Weekly_Timeslot extends Model { }
 
-Weekly_Timeslots.init(
+Weekly_Timeslot.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -46,7 +46,7 @@ Weekly_Timeslots.init(
     teacher_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'teachers',
+        model: 'teacher',
         key: 'id',
       },
     },
@@ -55,8 +55,8 @@ Weekly_Timeslots.init(
     sequelize,
     freezeTableName: true,
     underscored: true,
-    modelName: 'weekly_timeslots',
+    modelName: 'weekly_timeslot',
   }
 );
 
-module.exports = Weekly_Timeslots;
+module.exports = Weekly_Timeslot;

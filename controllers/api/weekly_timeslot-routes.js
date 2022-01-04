@@ -1,13 +1,13 @@
 const router = require('express').Router();
-const { Weekly_Timeslots, Teachers, Lessons } = require('../../models');
+const { Weekly_Timeslot, Teacher, Lesson } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 //Get all from weekly timeslots. Probably unneccesary for current goals, but why not
 router.get('/', (req, res) => {
-  Weekly_Timeslots.findAll({
+  Weekly_Timeslot.findAll({
     include: [
       {
-        model: Teachers,
+        model: Teacher,
         attributes: ['id', 'first_name', 'last_name']
       }
     ]
@@ -21,13 +21,13 @@ router.get('/', (req, res) => {
 
 //get route by id
 router.get('/:id', (req, res) => {
-  Weekly_Timeslots.findAll({
+  Weekly_Timeslot.findAll({
     where: {
       id: req.params.id
     },
     include: [
       {
-        model: Teachers,
+        model: Teacher,
         attributes: ['id', 'first_name', 'last_name']
       }
     ]
@@ -41,13 +41,13 @@ router.get('/:id', (req, res) => {
 
 //get route by day. It'll need a redirect. might be able to do day:day instead. I can't test it so I'll come back to it later.
 router.get('/day/:day', (req, res) => {
-  Weekly_Timeslots.findAll({
+  Weekly_Timeslot.findAll({
     where: {
       day: req.params.day
     },
     include: [
       {
-        model: Teachers,
+        model: Teacher,
         attributes: ['id', 'first_name', 'last_name']
       }
     ]
@@ -61,13 +61,13 @@ router.get('/day/:day', (req, res) => {
 
 //get route by start_date. same as above. might be able to use start_date:start_date
 router.get('/start_date/:start_date', (req, res) => {
-  Weekly_Timeslots.findAll({
+  Weekly_Timeslot.findAll({
     where: {
       start_date: req.params.start_date
     },
     include: [
       {
-        model: Teachers,
+        model: Teacher,
         attributes: ['id', 'first_name', 'last_name']
       }
     ]
@@ -81,7 +81,7 @@ router.get('/start_date/:start_date', (req, res) => {
 
 //post route
 router.post('/', withAuth, (req, res) => {
-  Weekly_Timeslots.create(req.body)
+  Weekly_Timeslot.create(req.body)
     .then(dbTimeslotData => res.json(dbTimeslotData))
     .catch(err => {
       console.log(err);
@@ -91,7 +91,7 @@ router.post('/', withAuth, (req, res) => {
 
 //update route
 router.put('/:id', withAuth, (req, res) => {
-  Weekly_Timeslots.update(req.body, {
+  Weekly_Timeslot.update(req.body, {
     where: {
       id: req.params.id
     }
@@ -111,7 +111,7 @@ router.put('/:id', withAuth, (req, res) => {
 
 //delete route
 router.delete('/:id', withAuth, (req, res) => {
-  Weekly_Timeslots.destroy({
+  Weekly_Timeslot.destroy({
     where: {
       id: req.params.id
     }
