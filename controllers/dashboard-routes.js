@@ -84,6 +84,9 @@ router.get(
 // }
 //);
 
+// search without specialties
+
+// search with specialties
 router.get('/search/:specialtyId', (req, res) => {
   Specialty.findAll({
     where: {
