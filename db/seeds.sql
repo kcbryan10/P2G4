@@ -1,4 +1,4 @@
-INSERT INTO users (email, password)
+INSERT INTO user (email, password)
 VALUES
 ('james@mail.com', 'password'),
 ('patricia@mail.com', 'password'),
@@ -6,17 +6,17 @@ VALUES
 ('mary@mail.com', 'password')
 ;
 
-INSERT INTO teachers (first_name, last_name, bio, user_id)
+INSERT INTO teacher (first_name, last_name, bio, user_id)
 VALUES
 ('James', 'Jameson', 'a bio for James', 1),
 ('Patricia', 'Patriciason', 'a bio for Patricia', 2);
 
-INSERT INTO students (first_name, last_name, user_id)
+INSERT INTO student (first_name, last_name, user_id)
 VALUES
 ('Robert', 'Robertson', 3),
 ('Mary', 'Maryson', 4);
 
-INSERT INTO weekly_timeslots (day, start_time, end_time, start_date, teacher_id)
+INSERT INTO weekly_timeslot (day, start_time, end_time, start_date, teacher_id)
 VALUES 
 (1, '12:00:00', '12:59:00', '12/1/2021', 1),
 (1, '13:00:00', '13:59:00', '12/1/2021', 1),
@@ -39,7 +39,7 @@ VALUES
 (4, '15:00:00', '15:59:00', '12/1/2021', 2),
 (4, '16:00:00', '16:59:00', '12/1/2021', 2);
 
-INSERT INTO lessons (timeslot_id, student_id, start_date)
+INSERT INTO lesson (timeslot_id, student_id, start_date)
 VALUES
 (1, 1, '12/1/2021'),
 (5, 2, '12/1/2021'),
