@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Lesson, Student, Teacher } = require('../models');
+const { Lesson, Teacher } = require('../models');
 const withAuth = require('../utils/auth');
 const { DateTime } = require('luxon');
 
@@ -58,11 +58,16 @@ router.get(
 
     // format times to 12 hour
     lessons.forEach((lesson) => {
-      const time = DateTime.fromSQL(
+      const startTime = DateTime.fromSQL(
         lesson.weekly_timeslot.start_time
       ).toLocaleString(DateTime.TIME_SIMPLE);
 
-      lesson.weekly_timeslot.start_time = time;
+      const endTime = DateTime.fromSQL(lesson.weekly_timeslot.end_time)
+        .plus({ minutes: 1 })
+        .toLocaleString(DateTime.TIME_SIMPLE);
+
+      lesson.weekly_timeslot.start_time = startTime;
+      lesson.weekly_timeslot.end_time = endTime;
     });
 
     res.render('dashboard', {
@@ -78,5 +83,34 @@ router.get(
 // });
 // }
 //);
+
+router.get('/search/:specialtyId', (req, res) => {
+  Specialty.findAll({
+    where: {
+      specialty_id: req.params.specialtyId,
+    },
+    include: [
+      {
+        model: Teacher,
+        attributes: ['first_name', 'last_name'],
+        include: [
+          {
+            model: Weekly_Timeslot,
+            include: [
+              {
+                model: Lesson,
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  }).then((dbSpecialtyData) => {
+    res.render('search', {
+      loggedIn: req.session.loggedIn,
+      currentUser: req.session.first_name,
+    });
+  });
+});
 
 module.exports = router;
