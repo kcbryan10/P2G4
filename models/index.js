@@ -7,77 +7,75 @@ const Specialties = require('./Specialties');
 
 // User
 User.hasOne(Student, {
-    foreignKey: 'user_id'
+  foreignKey: 'user_id',
 });
 
 User.hasOne(Teacher, {
-    foreignKey: 'user_id',
+  foreignKey: 'user_id',
 });
-
 // Student
 
 Student.belongsTo(User, {
-    foreignKey:'user_id'
+  foreignKey: 'user_id',
 });
 
 Student.hasMany(Lesson, {
-    foreignKey: 'student_id'
+  foreignKey: 'student_id',
 });
 
 // Teacher
 
 Teacher.belongsTo(User, {
-    foreignKey:'user_id'
+  foreignKey: 'user_id',
 });
 
 Teacher.hasMany(Weekly_Timeslot, {
-    foreignKey:'teacher_id'
+  foreignKey: 'teacher_id',
 });
 
 Teacher.hasMany(Specialties, {
-    foreignKey: 'specialties_id'
+  foreignKey: 'specialties_id',
 });
 
 Teacher.belongsToMany(Specialties, {
-    through: 'Teacher_specialtie',
-    as: 'teacher',
-    foreignKey:'specialties_id'
+  through: 'teacher_specialties',
+  as: 'teacher',
+  foreignKey: 'specialties_id',
 });
 
-
-
-
-// Weekly Timeslot 
+// Weekly Timeslot
 
 Weekly_Timeslot.belongsTo(Teacher, {
-    foreignKey: 'teacher_id'
-})
-
-Weekly_Timeslot.hasMany(Lesson, {
-    foreignKey: 'timeslot_id'
+  foreignKey: 'teacher_id',
 });
 
+Weekly_Timeslot.hasMany(Lesson, {
+  foreignKey: 'timeslot_id',
+});
 
-// Lesson 
+// Lesson
 
 Lesson.belongsTo(Weekly_Timeslot, {
-    foreignKey:'timeslot_id'
+  foreignKey: 'timeslot_id',
 });
 
 Lesson.belongsTo(Student, {
-    foreignKey: 'student_id'
+  foreignKey: 'student_id',
 });
 
-
-// Specialties 
+// Specialties
 
 Specialties.belongsToMany(Teacher, {
-    through: 'Teacher_specialties',
-    as: 'specialties',
-    foreignKey:'teacher_id'
+  through: 'teacher_specialties',
+  as: 'specialties',
+  foreignKey: 'teacher_id',
 });
 
-
-
-
-module.exports = { User, Lesson, Comment, Specialties, Teacher, Student};
+module.exports = {
+  User,
+  Lesson,
+  Specialties,
+  Teacher,
+  Student,
+  Weekly_Timeslot,
+};
