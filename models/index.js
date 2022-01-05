@@ -39,8 +39,8 @@ Teacher.hasMany(Specialties, {
 
 Teacher.belongsToMany(Specialties, {
   through: 'teacher_specialties',
-  as: 'teacher',
-  foreignKey: 'specialties_id',
+  as: 'specialties',
+  foreignKey: 'teacher_id',
 });
 
 // Weekly Timeslot
@@ -67,8 +67,8 @@ Lesson.belongsTo(Student, {
 
 Specialties.belongsToMany(Teacher, {
   through: 'teacher_specialties',
-  as: 'specialties',
-  foreignKey: 'teacher_id',
+  as: 'teachers',
+  foreignKey: 'specialties_id',
 });
 
 module.exports = {
