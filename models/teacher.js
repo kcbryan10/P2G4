@@ -1,5 +1,5 @@
-const { Model, DataTypes } = require("sequelize");
-const sequelize = require("../config/connection");
+const { Model, DataTypes } = require('sequelize');
+const sequelize = require('../config/connection');
 
 class Teacher extends Model {}
 
@@ -20,14 +20,14 @@ Teacher.init(
       allowNull: false,
     },
     bio: {
-      type: DataTypes.TEXT("medium"),
+      type: DataTypes.TEXT('medium'),
       allowNull: true,
     },
     user_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: "users",
-        key: "id",
+        model: 'user',
+        key: 'id',
       },
     },
   },
@@ -35,7 +35,7 @@ Teacher.init(
     sequelize,
     freezeTableName: true,
     underscored: true,
-    modelName: "teachers",
+    modelName: 'teacher',
   }
 );
 
