@@ -4,6 +4,8 @@ const seedStudents = require('./student-seeds');
 const seedTeachers = require('./teacher-seeds');
 const seedWeeklyTimeslots = require('./weekly_timeslot-seeds');
 const seedSpecialities = require('./specialities-seeds');
+const seedTeacherSpecialities = require('./teacherSpecialities-seeds');
+
 
 const sequelize = require('../config/connection');
 
@@ -27,6 +29,9 @@ const seedAll = async () => {
   console.log('--------------');
 
   await seedSpecialities();
+  console.log('--------------');
+
+  await seedTeacherSpecialities();
   console.log('--------------');
 
   process.exit(0);

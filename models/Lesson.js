@@ -1,7 +1,7 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Lesson extends Model {}
+class Lesson extends Model { }
 
 Lesson.init(
   {
@@ -12,14 +12,14 @@ Lesson.init(
       primaryKey: true,
     },
     start_date: {
-      type: DataTypes.DATEONLY,
+      type: DataTypes.DATE,
       allowNull: false,
       validate: {
         isDate: true,
       },
     },
     end_date: {
-      type: DataTypes.DATEONLY,
+      type: DataTypes.DATE,
       allowNull: true,
       validate: {
         isDate: true,

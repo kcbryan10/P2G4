@@ -1,24 +1,24 @@
 const sequelize = require('../config/connection');
-const { Specialties } = require('../models');
+const { Specialties, Teacher } = require('../models');
 
 const specialitiesData = [
   {
-    specialty_name: 's1'
+    specialty_name: 'Basket Weaving',
   },
   {
-    specialty_name: 's2'
+    specialty_name: 'Screeching Into The Void'
   },
   {
-    specialty_name: 's3'
+    specialty_name: 'Being Screeched At By The Void'
   },
   {
-    specialty_name: 's4'
+    specialty_name: 'Star Trek Trivia'
   },
   {
-    specialty_name: 's5'
+    specialty_name: 'Incorrect Star Trek Trivia'
   },
   {
-    specialty_name: 's6'
+    specialty_name: 'Being Woven Into Baskets'
   }
 ];
 

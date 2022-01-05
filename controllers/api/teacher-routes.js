@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Teacher, User } = require('../../models');
+const { Teacher, User, Specialties } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 // READ all Teachers (/api/teachers)
@@ -9,6 +9,14 @@ router.get('/', (req, res) => {
       {
         model: User,
         attributes: ['id', 'email']
+      },
+      {
+        model: Specialties,
+        as: 'specialities',
+        attributes: ['id', 'specialty_name'],
+        through: {
+          attributes: [],
+        }
       }
     ]
   })
@@ -31,6 +39,14 @@ router.get('/:id', (req, res) => {
       {
         model: User,
         attributes: ['id', 'email']
+      },
+      {
+        model: Specialties,
+        as: 'specialities',
+        attributes: ['id', 'specialty_name'],
+        through: {
+          attributes: [],
+        }
       }
     ]
   })
