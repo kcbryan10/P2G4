@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Lesson, Student } = require('../../models');
+const { Lesson, Student, Weekly_Timeslot } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 // READ all lessons (/api/lessons)
@@ -10,7 +10,11 @@ router.get('/', (req, res) => {
     include: [
       {
         model: Student,
-        attributes: ['id', 'first_name', 'last_name'],
+        attributes: ['id', 'first_name', 'last_name']
+      },
+      {
+        model: Weekly_Timeslot,
+        attributes: ['id', 'day', 'start_time', 'teacher_id']
       }
     ]
   })
@@ -34,7 +38,11 @@ router.get('/:id', (req, res) => {
     include: [
       {
         model: Student,
-        attributes: ['id', 'first_name', 'last_name'],
+        attributes: ['id', 'first_name', 'last_name']
+      },
+      {
+        model: Weekly_Timeslot,
+        attributes: ['id', 'day', 'start_time', 'teacher_id']
       }
     ]
   })
