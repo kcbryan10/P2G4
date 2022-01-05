@@ -1,12 +1,17 @@
 const router = require('express').Router();
-const { Lesson, Student, Weekly_Timeslot } = require('../../models');
+const { Specialties, Teacher, User } = require('../../models');
+const { sequelize } = require('../../models/user');
 const withAuth = require('../../utils/auth');
 
 // READ all lessons (/api/lessons)
 router.get('/', (req, res) => {
-  Lesson.findAll({
-    attributes: ['id', 'start_date', 'end_date'],
-    order: [['start_date', 'DESC']],
+  Specialties.findAll({
+    attributes: [
+      'id',
+      'specialty_name',
+      'end_date'
+      [sequelize.literal('(SELECT')]
+    ],
     include: [
       {
         model: Student,

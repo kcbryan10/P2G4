@@ -1,24 +1,18 @@
 const router = require('express').Router();
-const { Lesson, Student, Weekly_Timeslot } = require('../../models');
+const { Student, User } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-// READ all lessons (/api/lessons)
+// READ all Students (/api/students)
 router.get('/', (req, res) => {
-  Lesson.findAll({
-    attributes: ['id', 'start_date', 'end_date'],
-    order: [['start_date', 'DESC']],
+  Student.findAll({
     include: [
       {
-        model: Student,
-        attributes: ['id', 'first_name', 'last_name']
-      },
-      {
-        model: Weekly_Timeslot,
-        attributes: ['id', 'day', 'start_time', 'teacher_id']
+        model: User,
+        attributes: ['id', 'email']
       }
     ]
   })
-    .then((dbLessonData) => res.json(dbLessonData))
+    .then((dbStudentData) => res.json(dbStudentData))
     .catch((err) => {
       if (err) {
         console.log(err);
@@ -27,31 +21,25 @@ router.get('/', (req, res) => {
     });
 });
 
-// READ lesson by id (/api/lessons/:id)
+// READ Student by id (/api/students/:id)
 router.get('/:id', (req, res) => {
-  Lesson.findOne({
+  Student.findOne({
     where: {
       id: req.params.id,
     },
-    attributes: ['id', 'start_date', 'end_date'],
-    order: [['start_date', 'DESC']],
     include: [
       {
-        model: Student,
-        attributes: ['id', 'first_name', 'last_name']
-      },
-      {
-        model: Weekly_Timeslot,
-        attributes: ['id', 'day', 'start_time', 'teacher_id']
+        model: User,
+        attributes: ['id', 'email']
       }
     ]
   })
-    .then((dbLessonData) => {
-      if (!dbLessonData) {
-        res.status(404).json({ message: 'No lesson found with this id' });
+    .then((dbStudentData) => {
+      if (!dbStudentData) {
+        res.status(404).json({ message: 'No Student found with this id' });
         return;
       }
-      res.json(dbLessonData);
+      res.json(dbStudentData);
     })
     .catch((err) => {
       if (err) {
@@ -61,17 +49,11 @@ router.get('/:id', (req, res) => {
     });
 });
 
-// CREATE lesson (/api/lessons)
+// CREATE Student (/api/students)
 router.post('/', withAuth, (req, res) => {
-  // expects { start_date, student_id }
-  Lesson.create({
-    start_date: req.body.start_date,
-    student_id: req.session.student_id,
-    end_date: req.body.end_date || null,
-    timeslot_id: req.body.timeslot_id || null
-  })
-    .then((dbLessonData) => {
-      res.json(dbLessonData);
+  Student.create(req.body)
+    .then((dbStudentData) => {
+      res.json(dbStudentData);
     })
     .catch((err) => {
       console.log(err);
@@ -79,19 +61,19 @@ router.post('/', withAuth, (req, res) => {
     });
 });
 
-// UPDATE lesson (/api/lessons/:id)
+// UPDATE Student (/api/students/:id)
 router.put('/:id', withAuth, (req, res) => {
-  Lesson.update(req.body, {
+  Student.update(req.body, {
     where: {
       id: req.params.id,
     }
   })
-    .then((dbLessonData) => {
-      if (!dbLessonData) {
-        res.status(404).json({ message: 'No lesson found with this id' });
+    .then((dbStudentData) => {
+      if (!dbStudentData) {
+        res.status(404).json({ message: 'No Student found with this id' });
         return;
       }
-      res.json(dbLessonData);
+      res.json(dbStudentData);
     })
     .catch((err) => {
       console.log(err);
@@ -99,19 +81,19 @@ router.put('/:id', withAuth, (req, res) => {
     });
 });
 
-// DELETE lesson (/api/lessons/:id)
+// DELETE Student (/api/students/:id)
 router.delete('/:id', withAuth, (req, res) => {
-  Lesson.destroy({
+  Student.destroy({
     where: {
       id: req.params.id,
     }
   })
-    .then((dbLessonData) => {
-      if (!dbLessonData) {
-        res.status(404).json({ message: 'No lesson found with this id' });
+    .then((dbStudentData) => {
+      if (!dbStudentData) {
+        res.status(404).json({ message: 'No Student found with this id' });
         return;
       }
-      res.json(dbLessonData);
+      res.json(dbStudentData);
     })
     .catch((err) => {
       console.log(err);
