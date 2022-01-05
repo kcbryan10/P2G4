@@ -39,7 +39,7 @@ Teacher.hasMany(Specialties, {
 });
 
 Teacher.belongsToMany(Specialties, {
-    through: 'teacher_specialties',
+    through: 'Teacher_specialtie',
     as: 'teacher',
     foreignKey:'specialties_id'
 });
@@ -72,7 +72,7 @@ Lesson.belongsTo(Student, {
 // Specialties 
 
 Specialties.belongsToMany(Teacher, {
-    through: 'teacher_specialties',
+    through: 'Teacher_specialties',
     as: 'specialties',
     foreignKey:'teacher_id'
 });
