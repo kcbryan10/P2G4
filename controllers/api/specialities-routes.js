@@ -5,6 +5,7 @@ const withAuth = require('../../utils/auth');
 // READ all specialities (/api/specialities)
 router.get('/', (req, res) => {
   Specialties.findAll({
+    attributes: { exclude: ['specialties_id'] },
     include: [
       {
         model: Teacher,
@@ -31,6 +32,7 @@ router.get('/:id', (req, res) => {
     where: {
       id: req.params.id,
     },
+    attributes: { exclude: ['specialties_id'] },
     include: [
       {
         model: Teacher,
