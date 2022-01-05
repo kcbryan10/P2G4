@@ -10,13 +10,13 @@ router.get('/', (req, res) => {
     include: [
       {
         model: Student,
-        attributes: ['id', 'first_name', 'last_name']
+        attributes: ['id', 'first_name', 'last_name'],
       },
       {
         model: Weekly_Timeslot,
-        attributes: ['id', 'day', 'start_time', 'teacher_id']
-      }
-    ]
+        attributes: ['id', 'day', 'start_time', 'teacher_id'],
+      },
+    ],
   })
     .then((dbLessonData) => res.json(dbLessonData))
     .catch((err) => {
@@ -38,13 +38,13 @@ router.get('/:id', (req, res) => {
     include: [
       {
         model: Student,
-        attributes: ['id', 'first_name', 'last_name']
+        attributes: ['id', 'first_name', 'last_name'],
       },
       {
         model: Weekly_Timeslot,
-        attributes: ['id', 'day', 'start_time', 'teacher_id']
-      }
-    ]
+        attributes: ['id', 'day', 'start_time', 'teacher_id'],
+      },
+    ],
   })
     .then((dbLessonData) => {
       if (!dbLessonData) {
@@ -63,12 +63,12 @@ router.get('/:id', (req, res) => {
 
 // CREATE lesson (/api/lessons)
 router.post('/', withAuth, (req, res) => {
-  // expects { start_date, student_id }
+  // expects { start_date, end_date, student_id, timeslot_id }
   Lesson.create({
     start_date: req.body.start_date,
     student_id: req.session.student_id,
     end_date: req.body.end_date || null,
-    timeslot_id: req.body.timeslot_id || null
+    timeslot_id: req.body.timeslot_id,
   })
     .then((dbLessonData) => {
       res.json(dbLessonData);
@@ -84,7 +84,7 @@ router.put('/:id', withAuth, (req, res) => {
   Lesson.update(req.body, {
     where: {
       id: req.params.id,
-    }
+    },
   })
     .then((dbLessonData) => {
       if (!dbLessonData) {
@@ -104,7 +104,7 @@ router.delete('/:id', withAuth, (req, res) => {
   Lesson.destroy({
     where: {
       id: req.params.id,
-    }
+    },
   })
     .then((dbLessonData) => {
       if (!dbLessonData) {
