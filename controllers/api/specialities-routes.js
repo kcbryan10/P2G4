@@ -6,22 +6,16 @@ const withAuth = require('../../utils/auth');
 // READ all lessons (/api/lessons)
 router.get('/', (req, res) => {
   Specialties.findAll({
-    attributes: [
-      'id',
-      'specialty_name',
-      'end_date'
-      [sequelize.literal('(SELECT')]
-    ],
     include: [
       {
-        model: Student,
-        attributes: ['id', 'first_name', 'last_name']
+        model: Teacher,
+        as: 'teachers',
+        attributes: ['id', 'first_name', 'last_name', 'bio'],
+        through: {
+          attributes: [],
+        }
       },
-      {
-        model: Weekly_Timeslot,
-        attributes: ['id', 'day', 'start_time', 'teacher_id']
-      }
-    ]
+    ],
   })
     .then((dbLessonData) => res.json(dbLessonData))
     .catch((err) => {
