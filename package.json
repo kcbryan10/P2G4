@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "seed": "node db/seeds/index.js",
+    "seeds": "node seeds/index.js",
     "dev": "nodemon server.js & npm run scss",
     "scss": "sass --watch utils/scss/main.scss public/css/style.css"
   },
