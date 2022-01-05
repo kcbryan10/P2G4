@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const sequelize = require('../config/connection');
+const { DateTime } = require('luxon');
 const { Teacher, Weekly_Timeslot, Lesson } = require('../models');
 
 router.get('/:id', (req, res) => {
@@ -11,14 +11,6 @@ router.get('/:id', (req, res) => {
     include: [
       {
         model: Weekly_Timeslot,
-        // attributes: [
-        //   [
-        //     sequelize.literal(
-        //       '(SELECT * FROM weekly_timeslot w LEFT JOIN lesson l ON w.id = l.timeslot_id WHERE l.timeslot_id IS NULL)'
-        //     ),
-        //     'available_timeslots',
-        //   ],
-        // ],
         include: [
           {
             model: Lesson,
@@ -35,6 +27,20 @@ router.get('/:id', (req, res) => {
 
       // serialize
       const teacher = dbTeacherData.get({ plain: true });
+
+      // format times to 12 hour
+      teacher.weekly_timeslots.forEach((timeslot) => {
+        const startTime = DateTime.fromSQL(timeslot.start_time).toLocaleString(
+          DateTime.TIME_SIMPLE
+        );
+
+        const endTime = DateTime.fromSQL(timeslot.end_time)
+          .plus({ minutes: 1 })
+          .toLocaleString(DateTime.TIME_SIMPLE);
+
+        timeslot.start_time = startTime;
+        timeslot.end_time = endTime;
+      });
 
       res.render('teacher-info', {
         teacher,

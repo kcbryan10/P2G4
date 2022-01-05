@@ -1,17 +1,19 @@
-<h2>{{teacherName}}</h2>
-<span>{{teacherSpecialties}}</span>
+<h2>{{teacher.first_name}} {{teacher.last_name}}</h2>
+<span>{{teacher.teacherSpecialties}}</span>
 
-<p>{{teacherBio}}</p>
+<p>{{teacher.bio}}</p>
 
 <div class='available-timeslots-wrapper'>
   <div class='day'>
     <p>Sunday</p>
     <ul class='available-timeslots'>
-      {{#each timeslots as |timeslot|}}
-      {{#if (checkDay 1 timeslot.weekly_timeslot.day)}}
+      {{#each teacher.weekly_timeslots as |timeslot|}}
+      {{#if (checkDay 1 timeslot.day)}}
+      {{#if (isAvailable timeslot)}}
       <li>
         {{> available-timeslots timeslot}}
       </li>
+      {{/if}}
       {{/if}}
       {{/each}}
     </ul>
@@ -19,11 +21,13 @@
   <div class='day'>
     <p>Monday</p>
     <ul class='available-timeslots'>
-      {{#each timeslots as |timeslot|}}
-      {{#if (checkDay 2 timeslot.weekly_timeslot.day)}}
+      {{#each teacher.weekly_timeslots as |timeslot|}}
+      {{#if (checkDay 2 timeslot.day)}}
+      {{#if (isAvailable timeslot)}}
       <li>
         {{> available-timeslots timeslot}}
       </li>
+      {{/if}}
       {{/if}}
       {{/each}}
     </ul>
@@ -31,11 +35,13 @@
   <div class='day'>
     <p>Tuesday</p>
     <ul class='available-timeslots'>
-      {{#each timeslots as |timeslot|}}
-      {{#if (checkDay 3 timeslot.weekly_timeslot.day)}}
+      {{#each teacher.weekly_timeslots as |timeslot|}}
+      {{#if (checkDay 3 timeslot.day)}}
+      {{#if (isAvailable timeslot)}}
       <li>
         {{> available-timeslots timeslot}}
       </li>
+      {{/if}}
       {{/if}}
       {{/each}}
     </ul>
@@ -43,11 +49,13 @@
   <div class='day'>
     <p>Wednesday</p>
     <ul class='available-timeslots'>
-      {{#each timeslots as |timeslot|}}
-      {{#if (checkDay 4 timeslot.weekly_timeslot.day)}}
+      {{#each teacher.weekly_timeslots as |timeslot|}}
+      {{#if (checkDay 4 timeslot.day)}}
+      {{#if (isAvailable timeslot)}}
       <li>
         {{> available-timeslots timeslot}}
       </li>
+      {{/if}}
       {{/if}}
       {{/each}}
     </ul>
@@ -55,11 +63,13 @@
   <div class='day'>
     <p>Thursday</p>
     <ul class='available-timeslots'>
-      {{#each timeslots as |timeslot|}}
-      {{#if (checkDay 5 timeslot.weekly_timeslot.day)}}
+      {{#each teacher.weekly_timeslots as |timeslot|}}
+      {{#if (checkDay 5 timeslot.day)}}
+      {{#if (isAvailable timeslot)}}
       <li>
         {{> available-timeslots timeslot}}
       </li>
+      {{/if}}
       {{/if}}
       {{/each}}
     </ul>
@@ -67,11 +77,13 @@
   <div class='day'>
     <p>Friday</p>
     <ul class='available-timeslots'>
-      {{#each timeslots as |timeslot|}}
-      {{#if (checkDay 6 timeslot.weekly_timeslot.day)}}
+      {{#each teacher.weekly_timeslots as |timeslot|}}
+      {{#if (checkDay 6 timeslot.day)}}
+      {{#if (isAvailable timeslot)}}
       <li>
         {{> available-timeslots timeslot}}
       </li>
+      {{/if}}
       {{/if}}
       {{/each}}
     </ul>
@@ -79,11 +91,13 @@
   <div class='day'>
     <p>Saturday</p>
     <ul class='available-timeslots'>
-      {{#each lessons as |timeslot|}}
-      {{#if (checkDay 7 timeslot.weekly_timeslot.day)}}
+      {{#each teacher.weekly_timeslots as |timeslot|}}
+      {{#if (checkDay 7 timeslot.day)}}
+      {{#if (isAvailable timeslot)}}
       <li>
         {{> available-timeslots timeslot}}
       </li>
+      {{/if}}
       {{/if}}
       {{/each}}
     </ul>
