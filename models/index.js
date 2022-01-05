@@ -7,13 +7,12 @@ const Specialties = require('./Specialties');
 
 // User
 User.hasOne(Student, {
-    foreignKey: 'user_id'
+  foreignKey: 'user_id',
 });
 
 User.hasOne(Teacher, {
-    foreignKey: 'user_id',
+  foreignKey: 'user_id',
 });
-
 // Student
 
 Student.belongsTo(User, {
@@ -44,9 +43,6 @@ Teacher.belongsToMany(Specialties, {
     foreignKey:'specialties_id'
 });
 
-
-
-
 // Weekly Timeslot 
 
 Weekly_Timeslot.belongsTo(Teacher, {
@@ -76,8 +72,6 @@ Specialties.belongsToMany(Teacher, {
     as: 'specialties',
     foreignKey:'teacher_id'
 });
-
-
 
 
 module.exports = { User, Lesson, Comment, Specialties, Teacher, Student};
