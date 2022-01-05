@@ -28,14 +28,14 @@ Lesson.init(
     timeslot_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'weekly_timeslots',
+        model: 'weekly_timeslot',
         key: 'id',
       },
     },
     student_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'students',
+        model: 'student',
         key: 'id',
       },
     },
@@ -44,7 +44,7 @@ Lesson.init(
     sequelize,
     freezeTableName: true,
     underscored: true,
-    modelName: 'lessons',
+    modelName: 'lesson',
   }
 );
 
