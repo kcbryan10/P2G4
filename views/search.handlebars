@@ -1,8 +1,28 @@
-<script type="" id="">
-<span>Select a Person: </span>
-<select id="">
-{{#each people}}
-	<option value="{{id}}">{{Specialties}}</option>
-{{/each}}
-</select>
-</script>
+<form class='search-form'>
+    <h2>Search By Specialties</h2>
+    <div>
+      <label for='email-login'>Specialties:</label>
+      <select>
+		{{#select Specialties}}
+        <option value='1'>s1</option>
+		<option value='2'>s2</option>
+		<option value='3'>s3</option>
+		<option value='4'>s4</option>
+		<option value='5'>s5</option>
+		<option value='6'>s6</option>
+		{{/select}}
+      </select>
+    </div>
+    <div>
+      <button type='submit'>search</button>
+    </div>
+  </form>
+
+  <div class="teacher-display">
+
+  </div>
+
+
+
+
+  
