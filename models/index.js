@@ -35,13 +35,13 @@ Teacher.hasMany(Weekly_Timeslot, {
 });
 
 Teacher.hasMany(Specialties, {
-    foreignKey: 'specialty_name'
+    foreignKey: 'specialties_id'
 });
 
 Teacher.belongsToMany(Specialties, {
     through: 'Teacher_specialtie',
     as: 'teacher',
-    foreignKey:'specialty_name'
+    foreignKey:'specialties_id'
 });
 
 
