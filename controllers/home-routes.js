@@ -3,7 +3,7 @@ const router = require('express').Router();
 router.get('/', (req, res) => {
   res.render('home', {
     loggedIn: req.session.loggedIn,
-    currentUser: req.session.username,
+    currentUser: req.session.email,
   });
 });
 
