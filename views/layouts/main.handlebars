@@ -18,11 +18,11 @@
         {{/if}}
         <a href='/'><i class='fas fa-home'></i></a>
         {{#if loggedIn}}
-         <a href='/login'>login/signup</a>
-        {{else}}
-         <a href='/dashboard'>dashboard</a>
+          <a href='/dashboard'>dashboard</a>
           <a href='/search'>search</a>
           <button id='logout'>logout</button>
+        {{else}}
+          <a href='/login'>login/signup</a>
         {{/if}}
       </nav>
       <hr />

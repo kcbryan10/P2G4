@@ -19,4 +19,5 @@ router.get('/teacher-signup', (req, res) => {
   res.render('teacher-signup');
 });
 
+
 module.exports = router;
