@@ -1,9 +1,8 @@
 const router = require('express').Router();
 const { Specialties, Teacher, User } = require('../../models');
-const { sequelize } = require('../../models/user');
 const withAuth = require('../../utils/auth');
 
-// READ all lessons (/api/lessons)
+// READ all specialities (/api/specialities)
 router.get('/', (req, res) => {
   Specialties.findAll({
     include: [
@@ -17,7 +16,7 @@ router.get('/', (req, res) => {
       },
     ],
   })
-    .then((dbLessonData) => res.json(dbLessonData))
+    .then((dbSpecialitiesData) => res.json(dbSpecialitiesData))
     .catch((err) => {
       if (err) {
         console.log(err);
@@ -26,31 +25,29 @@ router.get('/', (req, res) => {
     });
 });
 
-// READ lesson by id (/api/lessons/:id)
+// READ speciality by id (/api/specialities/:id)
 router.get('/:id', (req, res) => {
-  Lesson.findOne({
+  Specialties.findOne({
     where: {
       id: req.params.id,
     },
-    attributes: ['id', 'start_date', 'end_date'],
-    order: [['start_date', 'DESC']],
     include: [
       {
-        model: Student,
-        attributes: ['id', 'first_name', 'last_name']
+        model: Teacher,
+        as: 'teachers',
+        attributes: ['id', 'first_name', 'last_name', 'bio'],
+        through: {
+          attributes: [],
+        }
       },
-      {
-        model: Weekly_Timeslot,
-        attributes: ['id', 'day', 'start_time', 'teacher_id']
-      }
-    ]
+    ],
   })
-    .then((dbLessonData) => {
-      if (!dbLessonData) {
-        res.status(404).json({ message: 'No lesson found with this id' });
+    .then((dbSpecialitiesData) => {
+      if (!dbSpecialitiesData) {
+        res.status(404).json({ message: 'No speciality found with this id' });
         return;
       }
-      res.json(dbLessonData);
+      res.json(dbSpecialitiesData);
     })
     .catch((err) => {
       if (err) {
@@ -60,17 +57,12 @@ router.get('/:id', (req, res) => {
     });
 });
 
-// CREATE lesson (/api/lessons)
+// CREATE speciality (/api/specialities)
 router.post('/', withAuth, (req, res) => {
   // expects { start_date, student_id }
-  Lesson.create({
-    start_date: req.body.start_date,
-    student_id: req.session.student_id,
-    end_date: req.body.end_date || null,
-    timeslot_id: req.body.timeslot_id || null
-  })
-    .then((dbLessonData) => {
-      res.json(dbLessonData);
+  Specialties.create(req.body)
+    .then((dbSpecialitiesData) => {
+      res.json(dbSpecialitiesData);
     })
     .catch((err) => {
       console.log(err);
@@ -78,19 +70,19 @@ router.post('/', withAuth, (req, res) => {
     });
 });
 
-// UPDATE lesson (/api/lessons/:id)
+// UPDATE speciality (/api/specialities/:id)
 router.put('/:id', withAuth, (req, res) => {
-  Lesson.update(req.body, {
+  Specialties.update(req.body, {
     where: {
       id: req.params.id,
     }
   })
-    .then((dbLessonData) => {
-      if (!dbLessonData) {
-        res.status(404).json({ message: 'No lesson found with this id' });
+    .then((dbSpecialitiesData) => {
+      if (!dbSpecialitiesData) {
+        res.status(404).json({ message: 'No speciality found with this id' });
         return;
       }
-      res.json(dbLessonData);
+      res.json(dbSpecialitiesData);
     })
     .catch((err) => {
       console.log(err);
@@ -98,19 +90,19 @@ router.put('/:id', withAuth, (req, res) => {
     });
 });
 
-// DELETE lesson (/api/lessons/:id)
+// DELETE speciality (/api/specialities/:id)
 router.delete('/:id', withAuth, (req, res) => {
-  Lesson.destroy({
+  Specialties.destroy({
     where: {
       id: req.params.id,
     }
   })
-    .then((dbLessonData) => {
-      if (!dbLessonData) {
-        res.status(404).json({ message: 'No lesson found with this id' });
+    .then((dbSpecialitiesData) => {
+      if (!dbSpecialitiesData) {
+        res.status(404).json({ message: 'No speciality found with this id' });
         return;
       }
-      res.json(dbLessonData);
+      res.json(dbSpecialitiesData);
     })
     .catch((err) => {
       console.log(err);
