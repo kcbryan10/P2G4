@@ -39,7 +39,7 @@ router.get('/:id', (req, res) => {
     });
 });
 
-//get route by day. It'll need a redirect. might be able to do day:day instead. I can't test it so I'll come back to it later.
+//get route by day
 router.get('/day/:day', (req, res) => {
   Weekly_Timeslot.findAll({
     where: {
@@ -59,7 +59,7 @@ router.get('/day/:day', (req, res) => {
     });
 });
 
-//get route by start_date. same as above. might be able to use start_date:start_date
+//get route by start_date
 router.get('/start_date/:start_date', (req, res) => {
   Weekly_Timeslot.findAll({
     where: {
