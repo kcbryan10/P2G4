@@ -36,7 +36,14 @@ Teacher.hasMany(Weekly_Timeslot, {
 
 Teacher.hasMany(Specialties, {
     foreignKey: 'specialty_name'
-})
+});
+
+Teacher.belongsToMany(Specialties, {
+    through: 'Teacher_specialtie',
+    as: 'teacher',
+    foreignKey:'specialty_name'
+});
+
 
 
 
@@ -64,9 +71,12 @@ Lesson.belongsTo(Student, {
 
 // Specialties 
 
-Specialties.belongsTo(Teacher, {
-    foreignKey: 'teacher_id'
-})
+Specialties.belongsToMany(Teacher, {
+    through: 'Teacher_specialties',
+    as: 'specialties',
+    foreignKey:'teacher_id'
+});
+
 
 
 
