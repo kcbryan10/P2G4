@@ -6,12 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-<<<<<<< HEAD
-    "seed": "node db/seeds/index.js"
-=======
+    "seed": "node db/seeds/index.js",
     "dev": "nodemon server.js & npm run scss",
     "scss": "sass --watch utils/scss/main.scss public/css/style.css"
->>>>>>> 8f4825554c3498ea94b85be9f30af35482523dbf
   },
   "repository": {
     "type": "git",
