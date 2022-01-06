@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { DateTime } = require('luxon');
-const { Teacher, Weekly_Timeslot, Lesson } = require('../models');
+const { Teacher, Weekly_Timeslot, Lesson, Specialties } = require('../models');
+const { sequelize } = require('../models/user');
 
 router.get('/:id', (req, res) => {
   Teacher.findOne({
@@ -26,6 +27,7 @@ router.get('/:id', (req, res) => {
         return;
       }
 
+      console.log(dbTeacherData);
       // serialize
       const teacher = dbTeacherData.get({ plain: true });
 
