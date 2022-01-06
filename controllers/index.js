@@ -4,9 +4,11 @@ const apiRoutes = require('./api');
 const dashboardRoutes = require('./dashboard-routes');
 const homeRoutes = require('./home-routes');
 const searchRoutes = require ('./search-routes')
+const teacherInfoRoutes = require('./teacher-info-routes');
 
 router.use('/api', apiRoutes);
 router.use('/dashboard', dashboardRoutes);
+router.use('/teacher-info', teacherInfoRoutes);
 router.use('/', homeRoutes);
 router.use('/search', searchRoutes);
 
