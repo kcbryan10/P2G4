@@ -4,8 +4,8 @@
 - why we wanted to make this app in paticular is because there didnt seem to be any sights there where a "one stop shop" for student teacher scheduling
 - how we acomplished this is using the knowledge and tools we learned throughout our time in the KU coding course so far.
 - we learned alot about commincation between memeber (cordination), aswell as researching and applying new packages/ technologies
-- Click [here](https://protected-dusk-79081.herokuapp.com/) to go to the deployed application. 
-- Click [here](https://github.com/kcbryan10/Studious) to go to the github paged for the application.
+- Click [here](https://protected-dusk-79081.herokuapp.com/) to go to the DEPLOYED application. 
+- Click [here](https://github.com/kcbryan10/Studious) to go to the GITHUB paged for the application.
     
 ## Table of Contents 
 - [Installation](#installation)
