@@ -32,15 +32,14 @@ on the search page you will find a list for specialties to select from. select w
 once on the scheduling page you will see what timeslot teacher have open on certain days. click schedule lesson under the timeslot and scroll down to select a date that works for you.
     
 you can then revisit the dashboard and find that to look at you scheduled lessons.
+   
+## Collaborators
+- Daniel Denton ()
+- Justin Eicher
+- Naomi Eckhoff
+- Bryan Keller
     
-## Credits
-Collaborators:
--Daniel Denton ()
--Justin Eicher
--Naomi Eckhoff
--Bryan Keller
-    
-Attributions:
+## Attributions:
     
 ## License
 The last section of a high-quality README file is the license. This lets other developers know what they can and cannot do with your project. If you need help choosing a license, refer to [https://choosealicense.com/](https://choosealicense.com/).
