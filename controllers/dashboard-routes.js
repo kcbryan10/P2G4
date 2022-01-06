@@ -22,6 +22,7 @@ router.get('/', withAuth, (req, res) => {
     .then((dbLessonData) => {
       const lessons = dbLessonData.map((lesson) => lesson.get({ plain: true }));
 
+      console.log(lessons);
       // format times to 12 hour
       lessons.forEach((lesson) => {
         const startTime = DateTime.fromSQL(
