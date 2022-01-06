@@ -148,3 +148,20 @@ form {
   background-color: $gray;
   padding: 10px;
 }
+
+.teacher-result {
+  padding:5px;
+  margin: 10px;
+  border-bottom: 3px solid black ;
+  margin-right: 10%;
+}
+
+.teacher-name{
+    text-decoration: none;
+    color: $dark-blue;
+    margin-right: 5px; 
+}
+
+.teacher-name:hover {
+  color: $light-blue;
+}
