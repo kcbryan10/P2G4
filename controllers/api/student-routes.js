@@ -8,9 +8,9 @@ router.get('/', (req, res) => {
     include: [
       {
         model: User,
-        attributes: ['id', 'email']
-      }
-    ]
+        attributes: ['id', 'email'],
+      },
+    ],
   })
     .then((dbStudentData) => res.json(dbStudentData))
     .catch((err) => {
@@ -30,9 +30,37 @@ router.get('/:id', (req, res) => {
     include: [
       {
         model: User,
-        attributes: ['id', 'email']
+        attributes: ['id', 'email'],
+      },
+    ],
+  })
+    .then((dbStudentData) => {
+      if (!dbStudentData) {
+        res.status(404).json({ message: 'No Student found with this id' });
+        return;
       }
-    ]
+      res.json(dbStudentData);
+    })
+    .catch((err) => {
+      if (err) {
+        console.log(err);
+        res.status(500).json(err);
+      }
+    });
+});
+
+// READ Student by user_id (/api/students/user/:id)
+router.get('/user/:id', (req, res) => {
+  Student.findOne({
+    where: {
+      id: req.params.id,
+    },
+    include: [
+      {
+        model: User,
+        attributes: ['id', 'email'],
+      },
+    ],
   })
     .then((dbStudentData) => {
       if (!dbStudentData) {
@@ -53,7 +81,11 @@ router.get('/:id', (req, res) => {
 router.post('/', withAuth, (req, res) => {
   Student.create(req.body)
     .then((dbStudentData) => {
-      res.json(dbStudentData);
+      req.session.save(() => {
+        req.session.student_id = dbStudentData.id;
+        req.session.username = dbStudentData.first_name;
+        res.json(dbStudentData);
+      });
     })
     .catch((err) => {
       console.log(err);
@@ -66,7 +98,7 @@ router.put('/:id', withAuth, (req, res) => {
   Student.update(req.body, {
     where: {
       id: req.params.id,
-    }
+    },
   })
     .then((dbStudentData) => {
       if (!dbStudentData) {
@@ -86,7 +118,7 @@ router.delete('/:id', withAuth, (req, res) => {
   Student.destroy({
     where: {
       id: req.params.id,
-    }
+    },
   })
     .then((dbStudentData) => {
       if (!dbStudentData) {

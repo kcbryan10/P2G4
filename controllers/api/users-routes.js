@@ -6,13 +6,10 @@ const withAuth = require('../../utils/auth');
 // get all User
 router.get('/', (req, res) => {
   User.findAll({
-    attributes: [
-      'id',
-      'email'
-    ]
+    attributes: ['id', 'email'],
   })
-    .then(dbUserData => res.json(dbUserData))
-    .catch(err => {
+    .then((dbUserData) => res.json(dbUserData))
+    .catch((err) => {
       console.log(err);
       res.status(500).json(err);
     });
@@ -22,17 +19,17 @@ router.get('/:id', (req, res) => {
   User.findOne({
     attributes: { exclude: ['password'] },
     where: {
-      id: req.params.id
-    }
+      id: req.params.id,
+    },
   })
-    .then(dbUserData => {
+    .then((dbUserData) => {
       if (!dbUserData) {
         res.status(404).json({ message: 'No User found with this id' });
         return;
       }
       res.json(dbUserData);
     })
-    .catch(err => {
+    .catch((err) => {
       console.log(err);
       res.status(500).json(err);
     });
@@ -41,9 +38,9 @@ router.get('/:id', (req, res) => {
 router.post('/', (req, res) => {
   User.create({
     email: req.body.email,
-    password: req.body.password
+    password: req.body.password,
   })
-    .then(dbUserData => {
+    .then((dbUserData) => {
       req.session.save(() => {
         req.session.user_id = dbUserData.id;
         req.session.email = dbUserData.email;
@@ -52,7 +49,7 @@ router.post('/', (req, res) => {
         res.json(dbUserData);
       });
     })
-    .catch(err => {
+    .catch((err) => {
       console.log(err);
       res.status(500).json(err);
     });
@@ -61,9 +58,15 @@ router.post('/', (req, res) => {
 router.post('/login', (req, res) => {
   User.findOne({
     where: {
-      email: req.body.email
-    }
-  }).then(dbUserData => {
+      email: req.body.email,
+    },
+    include: [
+      {
+        model: Student,
+        attributes: ['id', 'first_name'],
+      },
+    ],
+  }).then((dbUserData) => {
     if (!dbUserData) {
       res.status(400).json({ message: 'No User with that email address!' });
       return;
@@ -80,6 +83,8 @@ router.post('/login', (req, res) => {
       req.session.user_id = dbUserData.id;
       req.session.email = dbUserData.email;
       req.session.loggedIn = true;
+      req.session.student_id = dbUserData.student.id;
+      req.session.username = dbUserData.student.first_name;
 
       res.json({ User: dbUserData, message: 'You are now logged in!' });
     });
@@ -91,8 +96,7 @@ router.post('/logout', (req, res) => {
     req.session.destroy(() => {
       res.status(204).end();
     });
-  }
-  else {
+  } else {
     res.status(404).end();
   }
 });
@@ -101,17 +105,17 @@ router.put('/:id', withAuth, (req, res) => {
   User.update(req.body, {
     individualHooks: true,
     where: {
-      id: req.params.id
-    }
+      id: req.params.id,
+    },
   })
-    .then(dbUserData => {
+    .then((dbUserData) => {
       if (!dbUserData) {
         res.status(404).json({ message: 'No User found with this id' });
         return;
       }
       res.json(dbUserData);
     })
-    .catch(err => {
+    .catch((err) => {
       console.log(err);
       res.status(500).json(err);
     });
@@ -120,17 +124,17 @@ router.put('/:id', withAuth, (req, res) => {
 router.delete('/:id', withAuth, (req, res) => {
   User.destroy({
     where: {
-      id: req.params.id
-    }
+      id: req.params.id,
+    },
   })
-    .then(dbUserData => {
+    .then((dbUserData) => {
       if (!dbUserData) {
         res.status(404).json({ message: 'No User found with this id' });
         return;
       }
       res.json(dbUserData);
     })
-    .catch(err => {
+    .catch((err) => {
       console.log(err);
       res.status(500).json(err);
     });

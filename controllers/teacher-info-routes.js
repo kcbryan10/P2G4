@@ -23,6 +23,7 @@ router.get('/:id', (req, res) => {
     .then((dbTeacherData) => {
       if (!dbTeacherData) {
         res.status(404).json({ message: 'No teacher found with this id' });
+        return;
       }
 
       // serialize
@@ -45,7 +46,7 @@ router.get('/:id', (req, res) => {
       res.render('teacher-info', {
         teacher,
         loggedIn: req.session.loggedIn,
-        currentUser: req.session.first_name,
+        currentUser: req.session.username,
       });
     })
     .catch((err) => {
