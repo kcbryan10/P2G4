@@ -3,7 +3,7 @@ const router = require('express').Router();
 router.get('/', (req, res) => {
   res.render('home', {
     loggedIn: req.session.loggedIn,
-    currentUser: req.session.email,
+    currentUser: req.session.username,
   });
 });
 
@@ -18,6 +18,5 @@ router.get('/login', (req, res) => {
 router.get('/teacher-signup', (req, res) => {
   res.render('teacher-signup');
 });
-
 
 module.exports = router;
