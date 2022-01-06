@@ -6,7 +6,6 @@ const seedWeeklyTimeslots = require('./weekly_timeslot-seeds');
 const seedSpecialities = require('./specialities-seeds');
 const seedTeacherSpecialities = require('./teacherSpecialities-seeds');
 
-
 const sequelize = require('../config/connection');
 
 const seedAll = async () => {
@@ -16,10 +15,10 @@ const seedAll = async () => {
   await seedUsers();
   console.log('--------------');
 
-  await seedStudents();
+  await seedTeachers();
   console.log('--------------');
 
-  await seedTeachers();
+  await seedStudents();
   console.log('--------------');
 
   await seedWeeklyTimeslots();

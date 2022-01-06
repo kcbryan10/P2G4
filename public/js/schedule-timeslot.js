@@ -88,7 +88,7 @@ async function submitSchedule(event) {
     timeslot_id: timeslot_id,
   };
 
-  const response = fetch('/api/lessons', {
+  const response = await fetch('/api/lessons', {
     method: 'POST',
     body: JSON.stringify(data),
     headers: {
