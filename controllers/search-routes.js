@@ -3,7 +3,10 @@ const {Specialties, Teacher} = require('../models');
 const sequelize = require('../config/connection');
 
 router.get('/', (req,res) => {
-  res.render('search')
+  res.render('search', {
+    loggedIn: req.session.loggedIn,
+    currentUser: req.session.email,
+  });
 });
 
 router.get('/:id', async(req,res) => {
@@ -17,8 +20,9 @@ router.get('/:id', async(req,res) => {
 
   res.render('search', {
     loggedIn: req.session.loggedIn,
-    currentUser: req.session.first_name,
-    teacher: results
+    currentUser: req.session.email,
+    teacher: results,
+    specialty_name: results[0].specialty_name
   });
 
 });
