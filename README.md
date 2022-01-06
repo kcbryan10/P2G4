@@ -4,7 +4,8 @@
 - why we wanted to make this app in paticular is because there didnt seem to be any sights there where a "one stop shop" for student teacher scheduling
 - how we acomplished this is using the knowledge and tools we learned throughout our time in the KU coding course so far.
 - we learned alot about commincation between memeber (cordination), aswell as researching and applying new packages/ technologies
-- Click [here](https://protected-dusk-79081.herokuapp.com/) to go to my Quora profile. 
+- Click [here](https://protected-dusk-79081.herokuapp.com/) to go to the deployed application. 
+- Click [here](https://github.com/kcbryan10/Studious) to go to the github paged for the application.
     
 ## Table of Contents 
 - [Installation](#installation)
@@ -34,12 +35,25 @@ once on the scheduling page you will see what timeslot teacher have open on cert
 you can then revisit the dashboard and find that to look at you scheduled lessons.
    
 ## Collaborators
-- Daniel Denton ()
-- Justin Eicher
-- Naomi Eckhoff
-- Bryan Keller
+- Daniel Denton [Github](https://github.com/HighDynamics)
+- Justin Eicher [Github](https://github.com/Justin-Eicher)
+- Naomi Eckhoff [Github](https://github.com/Naomi-Eckhoff)
+- Bryan Keller [Gtihub](https://github.com/kcbryan10)
     
-## Attributions:
+## Technologies
+- bcrypt [source](https://www.npmjs.com/package/bcrypt)
+- sequelize [source](https://sequelize.org/)
+- dotenv [source](https://www.npmjs.com/package/dotenv)
+- express [source](https://expressjs.com/)
+- handlebars [source](https://handlebarsjs.com/)
+- sass [source](https://sass-lang.com/)
+- node [source](https://nodejs.org/en/)
+- mysql2 [source](https://www.mysql.com/)
+- nodemon [source](https://www.npmjs.com/package/nodemon)
+- express session [source](https://www.npmjs.com/package/express-session)
+- connect session sequelize [source](https://www.npmjs.com/package/connect-session-sequelize)
+- luxon [source](https://moment.github.io/luxon/#/?id=luxon)
+
     
 ## License
 MIT License
