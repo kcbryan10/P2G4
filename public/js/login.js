@@ -38,10 +38,16 @@ async function signupHandler(event) {
 
     let studentApiResponse;
 
+    // clone response to get user_id
+    const user_id = await usersApiResponse
+      .clone()
+      .json()
+      .then((data) => data.id);
+
     if (usersApiResponse.ok) {
       studentApiResponse = await fetch('/api/students', {
         method: 'POST',
-        body: JSON.stringify({ first_name, last_name }),
+        body: JSON.stringify({ first_name, last_name, user_id }),
         headers: { 'Content-Type': 'application/json' },
       });
     }

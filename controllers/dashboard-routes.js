@@ -73,7 +73,7 @@ router.get(
     res.render('dashboard', {
       lessons,
       loggedIn: req.session.loggedIn,
-      currentUser: req.session.first_name,
+      currentUser: req.session.email,
     });
   }
 );
@@ -111,7 +111,7 @@ router.get('/search/:specialtyId', (req, res) => {
   }).then((dbSpecialtyData) => {
     res.render('search', {
       loggedIn: req.session.loggedIn,
-      currentUser: req.session.first_name,
+      currentUser: req.session.email,
     });
   });
 });
