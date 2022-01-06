@@ -24,6 +24,8 @@
 ## Usage
 there are 4 main pages on the website (homepage, login/signuppage, dashboard, search). to navigate to the dashboard or search page you must first login on the login/signup page, which you can find in the top left hand corner.
     
+![Studious-homepage](https://user-images.githubusercontent.com/90362572/148450508-5b19a728-d14e-499c-917d-a5199245a599.png)
+    
 once you get on the login/signup page type in you first and last name aswell as you email and password hit submit and you will be auto redirected to the dashboard.
     
 on the dashbaord you will see one row for ever day of the week (which are all empty). to continue to make an appointment click the find the instructor link at the bottom of the page and you will be taken to the search page.
