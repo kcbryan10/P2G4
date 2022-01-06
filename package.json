@@ -1,0 +1,38 @@
+{
+  "name": "p2g4",
+  "version": "1.0.0",
+  "description": "Project 2 Group 4",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "seeds": "node seeds/index.js",
+    "dev": "nodemon server.js & npm run scss",
+    "scss": "sass --watch utils/scss/main.scss public/css/style.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kcbryan10/P2G4.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kcbryan10/P2G4/issues"
+  },
+  "homepage": "https://github.com/kcbryan10/P2G4#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "connect-session-sequelize": "^7.1.2",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.2",
+    "express-handlebars": "^6.0.2",
+    "express-session": "^1.17.2",
+    "handlebars": "^4.7.7",
+    "luxon": "^2.3.0",
+    "mysql2": "^2.3.3",
+    "node": "^17.3.0",
+    "nodemon": "^2.0.15",
+    "sass": "^1.45.2",
+    "sequelize": "^6.12.1"
+  }
+}
