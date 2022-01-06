@@ -1,10 +1,12 @@
 <p>{{weekly_timeslot.start_time}}
   -
   {{weekly_timeslot.end_time}}
-  (<a
-    href='/teacher-info/{{weekly_timeslot.teacher_id}}'
-  >{{weekly_timeslot.teacher.first_name}}
-    {{weekly_timeslot.teacher.last_name}})</a></p>
+</p>
+(<a
+  href='/teacher-info/{{weekly_timeslot.teacher_id}}'
+>{{weekly_timeslot.teacher.first_name}}
+  {{weekly_timeslot.teacher.last_name}}</a>)
+<br />
 <button class='delete-lesson-btn' data-lesson_id={{id}}><i
     class='far fa-trash-alt'
     data-lesson_id={{id}}

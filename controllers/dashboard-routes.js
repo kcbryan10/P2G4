@@ -22,6 +22,14 @@ router.get('/', withAuth, (req, res) => {
     .then((dbLessonData) => {
       const lessons = dbLessonData.map((lesson) => lesson.get({ plain: true }));
 
+      // order lessons by time
+      lessons.sort((a, b) => {
+        return (
+          Number(a.weekly_timeslot.start_time.substring(0, 2)) -
+          Number(b.weekly_timeslot.start_time.substring(0, 2))
+        );
+      });
+
       console.log(lessons);
       // format times to 12 hour
       lessons.forEach((lesson) => {
