@@ -25,7 +25,7 @@ router.get('/:id', async (req, res) => {
 
   res.render('search', {
     loggedIn: req.session.loggedIn,
-    currentUser: req.session.email,
+    currentUser: req.session.username,
     teacher: results,
     specialty_name: results[0].specialty_name,
   });
