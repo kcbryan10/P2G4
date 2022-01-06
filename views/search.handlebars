@@ -22,11 +22,13 @@
         <button type='submit'>search</button>
     </form>
 
+
     <div class='teacher-display'>
+      <h2>{{specialty_name}}</h2>
       <ul class="displayed-teachers">
         {{#each teacher as |teacher|}}
           <div class="teacher-result">
-            <a href='/' class="teacher-name">
+            <a href='/teacher-info/{{teacher_id}}' class="teacher-name">
               {{first_name}}, {{last_name}}
             </a>
             <div class="teacher-bio">
