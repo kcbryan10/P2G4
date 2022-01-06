@@ -5,7 +5,7 @@ const sequelize = require('../config/connection');
 router.get('/', (req, res) => {
   res.render('search', {
     loggedIn: req.session.loggedIn,
-    currentUser: req.session.email,
+    currentUser: req.session.username,
   });
 });
 
