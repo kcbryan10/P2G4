@@ -64,7 +64,7 @@ you can then revisit the dashboard and find that to look at you scheduled lesson
 ## License
 MIT License
 
-Copyright (c) [2022] [Bryan J Keller]
+Copyright(c)[2022BryanJKeller
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
