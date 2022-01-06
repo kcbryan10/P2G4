@@ -1,38 +1,79 @@
-# <Your-Project-Title>
+# <Studious>
 ## Description
-Provide a short description explaining the what, why, and how of your project. Use the following questions as a guide:
-- What was your motivation?
-- Why did you build this project? (Note: the answer is not "Because it was a homework assignment.")
-- What problem does it solve?
-- What did you learn?
-## Table of Contents (Optional)
-If your README is long, add a table of contents to make it easy for users to find what they need.
+- what we made was a fully functional application that allows student and teacher to connect and schedule lessons
+- why we wanted to make this app in paticular is because there didnt seem to be any sights there where a "one stop shop" for student teacher scheduling
+- how we acomplished this is using the knowledge and tools we learned throughout our time in the KU coding course so far.
+- we learned alot about commincation between memeber (cordination), aswell as researching and applying new packages/ technologies
+- [DEPLOYED ](https://protected-dusk-79081.herokuapp.com/) application. 
+- [GITHUB](https://github.com/kcbryan10/Studious) page for the application.
+    
+## Table of Contents 
 - [Installation](#installation)
 - [Usage](#usage)
 - [Credits](#credits)
 - [License](#license)
+    
 ## Installation
-What are the steps required to install your project? Provide a step-by-step description of how to get the development environment running.
+- Download files from github
+- run terminal with file path
+- run 'npm i' in terminal
+- run 'npm run seeds' in terminal
+- run 'npm run start' in terminal
+- view website at Localhost:3001 in web browser
+    
 ## Usage
-Provide instructions and examples for use. Include screenshots as needed.
-To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Then, using the relative filepath, add it to your README using the following syntax:
-    ```md
-    ![alt text](assets/images/screenshot.png)
-    ```
-## Credits
-List your collaborators, if any, with links to their GitHub profiles.
-If you used any third-party assets that require attribution, list the creators with links to their primary web presence in this section.
-If you followed tutorials, include links to those here as well.
+there are 4 main pages on the website (homepage, login/signuppage, dashboard, search). to navigate to the dashboard or search page you must first login on the login/signup page, which you can find in the top left hand corner.
+    
+once you get on the login/signup page type in you first and last name aswell as you email and password hit submit and you will be auto redirected to the dashboard.
+    
+on the dashbaord you will see one row for ever day of the week (which are all empty). to continue to make an appointment click the find the instructor link at the bottom of the page and you will be taken to the search page.
+    
+on the search page you will find a list for specialties to select from. select which specialty you are looking to be taught from the list that hit the search button to display all teacher that teacher that specialty. if you like what you see from a teacher you can click on there name to schedule an apointment with them.
+    
+once on the scheduling page you will see what timeslot teacher have open on certain days. click schedule lesson under the timeslot and scroll down to select a date that works for you.
+    
+you can then revisit the dashboard and find that to look at you scheduled lessons.
+   
+## Collaborators
+- Daniel Denton [Github](https://github.com/HighDynamics)
+- Justin Eicher [Github](https://github.com/Justin-Eicher)
+- Naomi Eckhoff [Github](https://github.com/Naomi-Eckhoff)
+- Bryan Keller [Gtihub](https://github.com/kcbryan10)
+    
+## Technologies
+- bcrypt [source](https://www.npmjs.com/package/bcrypt)
+- sequelize [source](https://sequelize.org/)
+- dotenv [source](https://www.npmjs.com/package/dotenv)
+- express [source](https://expressjs.com/)
+- handlebars [source](https://handlebarsjs.com/)
+- sass [source](https://sass-lang.com/)
+- node [source](https://nodejs.org/en/)
+- mysql2 [source](https://www.mysql.com/)
+- nodemon [source](https://www.npmjs.com/package/nodemon)
+- express session [source](https://www.npmjs.com/package/express-session)
+- connect session sequelize [source](https://www.npmjs.com/package/connect-session-sequelize)
+- luxon [source](https://moment.github.io/luxon/#/?id=luxon)
+
+    
 ## License
-The last section of a high-quality README file is the license. This lets other developers know what they can and cannot do with your project. If you need help choosing a license, refer to [https://choosealicense.com/](https://choosealicense.com/).
----
-🏆 The previous sections are the bare minimum, and your project will ultimately determine the content of this document. You might also want to consider adding the following sections.
-## Badges
-![badmath](https://img.shields.io/github/languages/top/nielsenjared/badmath)
-Badges aren't necessary, per se, but they demonstrate street cred. Badges let other developers know that you know what you're doing. Check out the badges hosted by [shields.io](https://shields.io/). You may not understand what they all represent now, but you will in time.
-## Features
-If your project has a lot of features, list them here.
-## How to Contribute
-If you created an application or package and would like other developers to contribute it, you can include guidelines for how to do so. The [Contributor Covenant](https://www.contributor-covenant.org/) is an industry standard, but you can always write your own if you'd prefer.
-## Tests
-Go the extra mile and write tests for your application. Then provide examples on how to run them here.
+MIT License
+
+Copyright (c) [2022] [Bryan J Keller]
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.

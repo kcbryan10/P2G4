@@ -1,6 +1,8 @@
 $dark-blue: rgba(19, 26, 117, 0.73);
 $light-blue: rgb(66, 74, 190);
 $gray: rgba(97, 97, 100, 0.52);
+$light-gray: rgb(206, 206, 211);
+$dark-gray: rgb(54, 54, 56);
 $yellow-orange: rgb(255, 222, 4);
 
 :root {
@@ -8,8 +10,17 @@ $yellow-orange: rgb(255, 222, 4);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+html,
+body {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  overflow: auto;
+}
+
 body {
   margin: 0;
+  background-image: linear-gradient(to bottom right, white, $gray);
 }
 
 /* ----- GENERAL ----- */
@@ -17,8 +28,31 @@ button {
   background-color: $yellow-orange;
   border: 2px solid black;
   border-radius: 10px;
+  cursor: pointer;
 }
 
+a {
+  text-decoration: none;
+  color: $dark-blue;
+}
+
+a:hover {
+  color: $light-blue;
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(to right, transparent, black, transparent);
+}
+
+.mainModalOn {
+  pointer-events: none;
+}
+
+.bodyModalOn {
+  box-shadow: inset 0 0 100vw black;
+}
 /* ----- MAIN STYLES ----- */
 header {
   nav {
@@ -26,25 +60,8 @@ header {
     height: 20px;
 
     a {
-      text-decoration: none;
-      color: $dark-blue;
       margin-right: 5px;
     }
-
-    a:hover {
-      color: $light-blue;
-    }
-  }
-
-  hr {
-    border: 0;
-    height: 1px;
-    background-image: linear-gradient(
-      to right,
-      transparent,
-      black,
-      transparent
-    );
   }
 
   h1 {
@@ -54,8 +71,17 @@ header {
 
 footer {
   text-align: center;
-  margin-bottom: 5px;
   font-style: italic;
+  width: 100%;
+
+  hr {
+    margin: 0;
+  }
+
+  p {
+    padding: 5px;
+    margin: 0;
+  }
 }
 
 /* ----- HOME STYLES ----- */
@@ -84,6 +110,7 @@ footer {
 
     a {
       color: white;
+      text-decoration: underline;
     }
   }
 }
@@ -113,19 +140,12 @@ footer {
   }
 }
 
-/* ----- LOGIN STYLES ----- */
-.teacher-signup {
-  a {
-    text-decoration: none;
-    color: $dark-blue;
-    margin-right: 5px;
-  }
-
-  a:hover {
-    color: $light-blue;
-  }
+.start-text {
+  width: 100%;
+  text-align: center;
 }
 
+/* ----- LOGIN STYLES ----- */
 form {
   margin: 0;
 
@@ -149,17 +169,77 @@ form {
   padding: 10px;
 }
 
+/* ----- DASHBOARD STYLES ----- */
+.schedule-wrapper {
+  border: 1px solid $gray;
+  width: 90%;
+  margin: 0 auto 10px auto;
+  background-image: linear-gradient(to bottom right, $light-gray, $dark-gray);
+
+  hr {
+    background-image: linear-gradient(
+      to right,
+      transparent,
+      white,
+      transparent
+    );
+    margin-top: 0;
+  }
+  .day {
+    p {
+      font-size: large;
+      padding-left: 5px;
+    }
+
+    ul {
+      list-style-type: none;
+      display: flex;
+      flex-wrap: wrap;
+      padding: 0;
+      margin-bottom: 0;
+    }
+
+    li {
+      padding: 0 10px 0 10px;
+      border-bottom: 1px solid white;
+      border-right: 1px solid white;
+      border-radius: 5px;
+      background-color: $light-gray;
+      text-align: center;
+      box-shadow: 1px 1px 5px black;
+      margin: 5px;
+
+      p {
+        margin: 0;
+        font-size: medium;
+        padding: 0;
+      }
+      button {
+        margin: 5px;
+      }
+    }
+  }
+}
+
+.text-wrapper {
+  width: 100%;
+  text-align: center;
+  font-size: large;
+  margin: 5px 0;
+}
+
+/* ----- SEARCH STYLES ----- */
 .teacher-result {
-  padding:5px;
+  padding: 5px;
   margin: 10px;
-  border-bottom: 3px solid black ;
+  border-bottom: 3px solid black;
   margin-right: 10%;
 }
 
-.teacher-name{
-    text-decoration: none;
-    color: $dark-blue;
-    margin-right: 5px; 
+.teacher-name {
+  text-decoration: none;
+  color: $dark-blue;
+  margin-right: 5px;
 }
 
 .teacher-name:hover {
@@ -168,4 +248,44 @@ form {
 
 .teacher-specialty-header {
   margin: 25%;
+}
+
+/* ----- TEACHER STYLES ----- */
+.teacher-info-name {
+  margin-left: 10px;
+}
+
+.teacher-info-bio {
+  margin-left: 20px;
+}
+
+.schedule-wrapper {
+  h3 {
+    text-align: center;
+  }
+}
+
+/* ----- MODAL STYLES ----- */
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 340px;
+  height: auto;
+  border: 2px solid black;
+  background-color: white;
+  box-shadow: 0px 0px 300px black;
+  padding: 10px 0;
+
+  .modal-header {
+    text-align: center;
+  }
+
+  form {
+    display: flex;
+    justify-content: space-around;
+    padding: 0 20%;
+    margin-top: 20px;
+  }
 }
