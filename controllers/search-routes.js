@@ -15,6 +15,12 @@ router.get('/:id', async(req,res) => {
   WHERE teacher_specialties.specialties_id=${req.params.id}`)
   console.log(results);
 
+  res.render('search', {
+    loggedIn: req.session.loggedIn,
+    currentUser: req.session.first_name,
+    teacher: results
+  });
+
 });
 
 module.exports=router;

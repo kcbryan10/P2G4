@@ -1,16 +1,16 @@
 <head>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 
   <body>
   
-    <form class='signup-form'>
+    <form class='signup-form' id="search-form">
 
         <h2>Search By Specialties</h2>
 
         <div>
           <label for='email-login'>Specialties:</label>
-          <select>
+          <select id="select-specialty">
             <option value='1'>Basket Weaving</option>
 		        <option value='2'>Screeching Into The Void</option>
 		        <option value='3'>Being Screeched At By The Void</option>
@@ -19,20 +19,25 @@
 		        <option value='6'>Being Woven Into Baskets</option>
           </select>
         </div>
-
-        <div>
-          <button type='submit' id='search-button'>search</button>
-        </div>
-
+        <button type='submit'>search</button>
     </form>
 
-  <div class="teacher-display">
-    <ul>
-      
-    </ul>
-  </div>
+    <div class='teacher-display'>
+      <ul class="displayed-teachers">
+        {{#each teacher as |teacher|}}
+          <div class="teacher-result">
+            <a href='/' class="teacher-name">
+              {{first_name}}, {{last_name}}
+            </a>
+            <div class="teacher-bio">
+              {{bio}}
+            </div>
+          </div>
+        {{/each}}
+      </ul>
+    </div>
 
-
+    <script src='/js/search.js'></script>
   </body>
 </html>
 

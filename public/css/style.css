@@ -118,9 +118,21 @@ form input {
   padding: 10px;
 }
 
-.teacher-display {
-  background-color: black;
-  margin: 50%;
+.teacher-result {
+  padding: 5px;
+  margin: 10px;
+  border-bottom: 3px solid black;
+  margin-right: 10%;
+}
+
+.teacher-name {
+  text-decoration: none;
+  color: rgba(19, 26, 117, 0.73);
+  margin-right: 5px;
+}
+
+.teacher-name:hover {
+  color: #424abe;
 }
 
 /*# sourceMappingURL=style.css.map */
