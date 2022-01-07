@@ -20,6 +20,10 @@ const userdata = [
   }
 ];
 
-const seedUsers = () => User.bulkCreate(userdata, { individualHooks: true });
-
+const seedUsers = async () => {
+  await User.create(userdata[0], { individualHooks: true });
+  await User.create(userdata[1], { individualHooks: true });
+  await User.create(userdata[2], { individualHooks: true });
+  await User.create(userdata[3], { individualHooks: true });
+}
 module.exports = seedUsers;
